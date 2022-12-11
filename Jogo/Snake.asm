@@ -1,22 +1,58 @@
-;TODO Tela instruções
-;TODO² Tela jogo
-;TODO³ Lógica Jogo
+jmp inicio
 
-Posicao_da_cobra:  	var #500
+;VARIAVEIS BEGIN
+;=====================================
+Posicao_da_cobra: var #500
 Tamanho_da_cobra:	var #1
 Direcao_da_cobra:	var #1 ; ;WASD
+Score: var #1
 
 Comida_index:	var #1
 Tem_comida:	var #1 ;boolean
 Letra: var #1
 Cobra : var #1200
+instrucoes_basicas : var #1200
+tela_final_fix : var #1200
+;VARIAVEIS END
+;=====================================
 
+                      
 inicio:
-	call Tela_jogo
-  call DigitaAlgo
-  call LimpaTela
-	breakp
-			
+
+  call printCobraScreen
+  call DigitaAlgo 
+  call LimpaTela 
+
+intrucoes:
+  call printinstrucoes_basicasScreen
+  call DigitaAlgo 
+  call LimpaTela 
+  
+main:
+
+    call Incializar_Cobra
+    call Mapa_Teste
+
+      loop_cobra_viva:
+            
+          call Desenha_Cobra_E_Comida
+          call Morreu
+          
+          call Movimentacao_da_Cobra
+          call Repor_Comida
+              
+          call Delay
+            
+          jmp loop_cobra_viva
+      
+      Reinicio_loop:
+      
+        call Reiniciar
+        jmp Reinicio_loop
+        
+    
+; TELAS
+; ================================================
 Tela_jogo:
   static Cobra + #0, #3967
   static Cobra + #1, #3967
@@ -1276,6 +1312,1292 @@ Tela_jogo:
   static Cobra + #1197, #3967
   static Cobra + #1198, #3967
   static Cobra + #1199, #3967
+  
+tela_instrucoes:
+  static instrucoes_basicas + #0, #2880
+  static instrucoes_basicas + #1, #2880
+  static instrucoes_basicas + #2, #2880
+  static instrucoes_basicas + #3, #2880
+  static instrucoes_basicas + #4, #2880
+  static instrucoes_basicas + #5, #2880
+  static instrucoes_basicas + #6, #2880
+  static instrucoes_basicas + #7, #2880
+  static instrucoes_basicas + #8, #2880
+  static instrucoes_basicas + #9, #2880
+  static instrucoes_basicas + #10, #2880
+  static instrucoes_basicas + #11, #2880
+  static instrucoes_basicas + #12, #2880
+  static instrucoes_basicas + #13, #2880
+  static instrucoes_basicas + #14, #2880
+  static instrucoes_basicas + #15, #2880
+  static instrucoes_basicas + #16, #2880
+  static instrucoes_basicas + #17, #2880
+  static instrucoes_basicas + #18, #2880
+  static instrucoes_basicas + #19, #2880
+  static instrucoes_basicas + #20, #2880
+  static instrucoes_basicas + #21, #2880
+  static instrucoes_basicas + #22, #2880
+  static instrucoes_basicas + #23, #2880
+  static instrucoes_basicas + #24, #2880
+  static instrucoes_basicas + #25, #2880
+  static instrucoes_basicas + #26, #2880
+  static instrucoes_basicas + #27, #2880
+  static instrucoes_basicas + #28, #2880
+  static instrucoes_basicas + #29, #2880
+  static instrucoes_basicas + #30, #2880
+  static instrucoes_basicas + #31, #2880
+  static instrucoes_basicas + #32, #2880
+  static instrucoes_basicas + #33, #2880
+  static instrucoes_basicas + #34, #2880
+  static instrucoes_basicas + #35, #2880
+  static instrucoes_basicas + #36, #2880
+  static instrucoes_basicas + #37, #2880
+  static instrucoes_basicas + #38, #2880
+  static instrucoes_basicas + #39, #2880
+
+  ;Linha 1
+  static instrucoes_basicas + #40, #2880
+  static instrucoes_basicas + #41, #127
+  static instrucoes_basicas + #42, #127
+  static instrucoes_basicas + #43, #127
+  static instrucoes_basicas + #44, #127
+  static instrucoes_basicas + #45, #127
+  static instrucoes_basicas + #46, #127
+  static instrucoes_basicas + #47, #127
+  static instrucoes_basicas + #48, #127
+  static instrucoes_basicas + #49, #127
+  static instrucoes_basicas + #50, #127
+  static instrucoes_basicas + #51, #127
+  static instrucoes_basicas + #52, #127
+  static instrucoes_basicas + #53, #127
+  static instrucoes_basicas + #54, #3967
+  static instrucoes_basicas + #55, #3967
+  static instrucoes_basicas + #56, #3967
+  static instrucoes_basicas + #57, #3967
+  static instrucoes_basicas + #58, #127
+  static instrucoes_basicas + #59, #127
+  static instrucoes_basicas + #60, #127
+  static instrucoes_basicas + #61, #127
+  static instrucoes_basicas + #62, #127
+  static instrucoes_basicas + #63, #127
+  static instrucoes_basicas + #64, #127
+  static instrucoes_basicas + #65, #127
+  static instrucoes_basicas + #66, #127
+  static instrucoes_basicas + #67, #127
+  static instrucoes_basicas + #68, #127
+  static instrucoes_basicas + #69, #127
+  static instrucoes_basicas + #70, #3967
+  static instrucoes_basicas + #71, #3967
+  static instrucoes_basicas + #72, #3967
+  static instrucoes_basicas + #73, #127
+  static instrucoes_basicas + #74, #127
+  static instrucoes_basicas + #75, #127
+  static instrucoes_basicas + #76, #127
+  static instrucoes_basicas + #77, #127
+  static instrucoes_basicas + #78, #3967
+  static instrucoes_basicas + #79, #2880
+
+  ;Linha 2
+  static instrucoes_basicas + #80, #2880
+  static instrucoes_basicas + #81, #127
+  static instrucoes_basicas + #82, #127
+  static instrucoes_basicas + #83, #127
+  static instrucoes_basicas + #84, #127
+  static instrucoes_basicas + #85, #127
+  static instrucoes_basicas + #86, #3967
+  static instrucoes_basicas + #87, #68
+  static instrucoes_basicas + #88, #73
+  static instrucoes_basicas + #89, #83
+  static instrucoes_basicas + #90, #67
+  static instrucoes_basicas + #91, #73
+  static instrucoes_basicas + #92, #80
+  static instrucoes_basicas + #93, #76
+  static instrucoes_basicas + #94, #73
+  static instrucoes_basicas + #95, #78
+  static instrucoes_basicas + #96, #65
+  static instrucoes_basicas + #97, #3967
+  static instrucoes_basicas + #98, #79
+  static instrucoes_basicas + #99, #82
+  static instrucoes_basicas + #100, #71
+  static instrucoes_basicas + #101, #45
+  static instrucoes_basicas + #102, #65
+  static instrucoes_basicas + #103, #82
+  static instrucoes_basicas + #104, #81
+  static instrucoes_basicas + #105, #3967
+  static instrucoes_basicas + #106, #50
+  static instrucoes_basicas + #107, #48
+  static instrucoes_basicas + #108, #50
+  static instrucoes_basicas + #109, #50
+  static instrucoes_basicas + #110, #47
+  static instrucoes_basicas + #111, #50
+  static instrucoes_basicas + #112, #127
+  static instrucoes_basicas + #113, #127
+  static instrucoes_basicas + #114, #127
+  static instrucoes_basicas + #115, #127
+  static instrucoes_basicas + #116, #127
+  static instrucoes_basicas + #117, #127
+  static instrucoes_basicas + #118, #3967
+  static instrucoes_basicas + #119, #2880
+
+  ;Linha 3
+  static instrucoes_basicas + #120, #2880
+  static instrucoes_basicas + #121, #127
+  static instrucoes_basicas + #122, #127
+  static instrucoes_basicas + #123, #127
+  static instrucoes_basicas + #124, #127
+  static instrucoes_basicas + #125, #127
+  static instrucoes_basicas + #126, #127
+  static instrucoes_basicas + #127, #127
+  static instrucoes_basicas + #128, #127
+  static instrucoes_basicas + #129, #127
+  static instrucoes_basicas + #130, #127
+  static instrucoes_basicas + #131, #127
+  static instrucoes_basicas + #132, #127
+  static instrucoes_basicas + #133, #127
+  static instrucoes_basicas + #134, #127
+  static instrucoes_basicas + #135, #127
+  static instrucoes_basicas + #136, #127
+  static instrucoes_basicas + #137, #127
+  static instrucoes_basicas + #138, #127
+  static instrucoes_basicas + #139, #127
+  static instrucoes_basicas + #140, #127
+  static instrucoes_basicas + #141, #127
+  static instrucoes_basicas + #142, #127
+  static instrucoes_basicas + #143, #127
+  static instrucoes_basicas + #144, #127
+  static instrucoes_basicas + #145, #127
+  static instrucoes_basicas + #146, #127
+  static instrucoes_basicas + #147, #127
+  static instrucoes_basicas + #148, #127
+  static instrucoes_basicas + #149, #127
+  static instrucoes_basicas + #150, #127
+  static instrucoes_basicas + #151, #127
+  static instrucoes_basicas + #152, #127
+  static instrucoes_basicas + #153, #127
+  static instrucoes_basicas + #154, #127
+  static instrucoes_basicas + #155, #127
+  static instrucoes_basicas + #156, #127
+  static instrucoes_basicas + #157, #127
+  static instrucoes_basicas + #158, #3967
+  static instrucoes_basicas + #159, #2880
+
+  ;Linha 4
+  static instrucoes_basicas + #160, #2880
+  static instrucoes_basicas + #161, #3967
+  static instrucoes_basicas + #162, #127
+  static instrucoes_basicas + #163, #127
+  static instrucoes_basicas + #164, #127
+  static instrucoes_basicas + #165, #127
+  static instrucoes_basicas + #166, #127
+  static instrucoes_basicas + #167, #127
+  static instrucoes_basicas + #168, #127
+  static instrucoes_basicas + #169, #127
+  static instrucoes_basicas + #170, #127
+  static instrucoes_basicas + #171, #127
+  static instrucoes_basicas + #172, #127
+  static instrucoes_basicas + #173, #127
+  static instrucoes_basicas + #174, #127
+  static instrucoes_basicas + #175, #127
+  static instrucoes_basicas + #176, #127
+  static instrucoes_basicas + #177, #127
+  static instrucoes_basicas + #178, #3967
+  static instrucoes_basicas + #179, #127
+  static instrucoes_basicas + #180, #127
+  static instrucoes_basicas + #181, #127
+  static instrucoes_basicas + #182, #127
+  static instrucoes_basicas + #183, #127
+  static instrucoes_basicas + #184, #127
+  static instrucoes_basicas + #185, #127
+  static instrucoes_basicas + #186, #127
+  static instrucoes_basicas + #187, #127
+  static instrucoes_basicas + #188, #127
+  static instrucoes_basicas + #189, #127
+  static instrucoes_basicas + #190, #127
+  static instrucoes_basicas + #191, #127
+  static instrucoes_basicas + #192, #127
+  static instrucoes_basicas + #193, #127
+  static instrucoes_basicas + #194, #127
+  static instrucoes_basicas + #195, #127
+  static instrucoes_basicas + #196, #127
+  static instrucoes_basicas + #197, #127
+  static instrucoes_basicas + #198, #3967
+  static instrucoes_basicas + #199, #2880
+
+  ;Linha 5
+  static instrucoes_basicas + #200, #2880
+  static instrucoes_basicas + #201, #3967
+  static instrucoes_basicas + #202, #127
+  static instrucoes_basicas + #203, #69
+  static instrucoes_basicas + #204, #83
+  static instrucoes_basicas + #205, #83
+  static instrucoes_basicas + #206, #69
+  static instrucoes_basicas + #207, #3967
+  static instrucoes_basicas + #208, #74
+  static instrucoes_basicas + #209, #79
+  static instrucoes_basicas + #210, #71
+  static instrucoes_basicas + #211, #79
+  static instrucoes_basicas + #212, #3967
+  static instrucoes_basicas + #213, #70
+  static instrucoes_basicas + #214, #79
+  static instrucoes_basicas + #215, #73
+  static instrucoes_basicas + #216, #3967
+  static instrucoes_basicas + #217, #66
+  static instrucoes_basicas + #218, #65
+  static instrucoes_basicas + #219, #83
+  static instrucoes_basicas + #220, #69
+  static instrucoes_basicas + #221, #65
+  static instrucoes_basicas + #222, #68
+  static instrucoes_basicas + #223, #79
+  static instrucoes_basicas + #224, #3967
+  static instrucoes_basicas + #225, #78
+  static instrucoes_basicas + #226, #79
+  static instrucoes_basicas + #227, #3967
+  static instrucoes_basicas + #228, #67
+  static instrucoes_basicas + #229, #76
+  static instrucoes_basicas + #230, #65
+  static instrucoes_basicas + #231, #83
+  static instrucoes_basicas + #232, #83
+  static instrucoes_basicas + #233, #73
+  static instrucoes_basicas + #234, #67
+  static instrucoes_basicas + #235, #79
+  static instrucoes_basicas + #236, #3967
+  static instrucoes_basicas + #237, #127
+  static instrucoes_basicas + #238, #3967
+  static instrucoes_basicas + #239, #2880
+
+  ;Linha 6
+  static instrucoes_basicas + #240, #2880
+  static instrucoes_basicas + #241, #3967
+  static instrucoes_basicas + #242, #127
+  static instrucoes_basicas + #243, #127
+  static instrucoes_basicas + #244, #127
+  static instrucoes_basicas + #245, #127
+  static instrucoes_basicas + #246, #127
+  static instrucoes_basicas + #247, #127
+  static instrucoes_basicas + #248, #127
+  static instrucoes_basicas + #249, #127
+  static instrucoes_basicas + #250, #3967
+  static instrucoes_basicas + #251, #3967
+  static instrucoes_basicas + #252, #3967
+  static instrucoes_basicas + #253, #3967
+  static instrucoes_basicas + #254, #3967
+  static instrucoes_basicas + #255, #3967
+  static instrucoes_basicas + #256, #3967
+  static instrucoes_basicas + #257, #3967
+  static instrucoes_basicas + #258, #3967
+  static instrucoes_basicas + #259, #127
+  static instrucoes_basicas + #260, #127
+  static instrucoes_basicas + #261, #127
+  static instrucoes_basicas + #262, #127
+  static instrucoes_basicas + #263, #127
+  static instrucoes_basicas + #264, #127
+  static instrucoes_basicas + #265, #127
+  static instrucoes_basicas + #266, #127
+  static instrucoes_basicas + #267, #127
+  static instrucoes_basicas + #268, #127
+  static instrucoes_basicas + #269, #127
+  static instrucoes_basicas + #270, #127
+  static instrucoes_basicas + #271, #127
+  static instrucoes_basicas + #272, #127
+  static instrucoes_basicas + #273, #127
+  static instrucoes_basicas + #274, #127
+  static instrucoes_basicas + #275, #127
+  static instrucoes_basicas + #276, #127
+  static instrucoes_basicas + #277, #127
+  static instrucoes_basicas + #278, #3967
+  static instrucoes_basicas + #279, #2880
+
+  ;Linha 7
+  static instrucoes_basicas + #280, #2880
+  static instrucoes_basicas + #281, #3967
+  static instrucoes_basicas + #282, #127
+  static instrucoes_basicas + #283, #3967
+  static instrucoes_basicas + #284, #3967
+  static instrucoes_basicas + #285, #3967
+  static instrucoes_basicas + #286, #3967
+  static instrucoes_basicas + #287, #3967
+  static instrucoes_basicas + #288, #3967
+  static instrucoes_basicas + #289, #3967
+  static instrucoes_basicas + #290, #3967
+  static instrucoes_basicas + #291, #3967
+  static instrucoes_basicas + #292, #3967
+  static instrucoes_basicas + #293, #3967
+  static instrucoes_basicas + #294, #3967
+  static instrucoes_basicas + #295, #3967
+  static instrucoes_basicas + #296, #3967
+  static instrucoes_basicas + #297, #3967
+  static instrucoes_basicas + #298, #83
+  static instrucoes_basicas + #299, #78
+  static instrucoes_basicas + #300, #65
+  static instrucoes_basicas + #301, #75
+  static instrucoes_basicas + #302, #69
+  static instrucoes_basicas + #303, #127
+  static instrucoes_basicas + #304, #127
+  static instrucoes_basicas + #305, #127
+  static instrucoes_basicas + #306, #127
+  static instrucoes_basicas + #307, #127
+  static instrucoes_basicas + #308, #127
+  static instrucoes_basicas + #309, #127
+  static instrucoes_basicas + #310, #127
+  static instrucoes_basicas + #311, #127
+  static instrucoes_basicas + #312, #127
+  static instrucoes_basicas + #313, #127
+  static instrucoes_basicas + #314, #127
+  static instrucoes_basicas + #315, #127
+  static instrucoes_basicas + #316, #127
+  static instrucoes_basicas + #317, #127
+  static instrucoes_basicas + #318, #3967
+  static instrucoes_basicas + #319, #2880
+
+  ;Linha 8
+  static instrucoes_basicas + #320, #2880
+  static instrucoes_basicas + #321, #3967
+  static instrucoes_basicas + #322, #127
+  static instrucoes_basicas + #323, #127
+  static instrucoes_basicas + #324, #3967
+  static instrucoes_basicas + #325, #3967
+  static instrucoes_basicas + #326, #3967
+  static instrucoes_basicas + #327, #127
+  static instrucoes_basicas + #328, #3967
+  static instrucoes_basicas + #329, #127
+  static instrucoes_basicas + #330, #127
+  static instrucoes_basicas + #331, #3967
+  static instrucoes_basicas + #332, #3967
+  static instrucoes_basicas + #333, #3967
+  static instrucoes_basicas + #334, #127
+  static instrucoes_basicas + #335, #127
+  static instrucoes_basicas + #336, #127
+  static instrucoes_basicas + #337, #127
+  static instrucoes_basicas + #338, #127
+  static instrucoes_basicas + #339, #127
+  static instrucoes_basicas + #340, #127
+  static instrucoes_basicas + #341, #127
+  static instrucoes_basicas + #342, #127
+  static instrucoes_basicas + #343, #127
+  static instrucoes_basicas + #344, #127
+  static instrucoes_basicas + #345, #127
+  static instrucoes_basicas + #346, #127
+  static instrucoes_basicas + #347, #127
+  static instrucoes_basicas + #348, #127
+  static instrucoes_basicas + #349, #127
+  static instrucoes_basicas + #350, #127
+  static instrucoes_basicas + #351, #127
+  static instrucoes_basicas + #352, #127
+  static instrucoes_basicas + #353, #127
+  static instrucoes_basicas + #354, #127
+  static instrucoes_basicas + #355, #127
+  static instrucoes_basicas + #356, #127
+  static instrucoes_basicas + #357, #127
+  static instrucoes_basicas + #358, #127
+  static instrucoes_basicas + #359, #2880
+
+  ;Linha 9
+  static instrucoes_basicas + #360, #2880
+  static instrucoes_basicas + #361, #3967
+  static instrucoes_basicas + #362, #127
+  static instrucoes_basicas + #363, #127
+  static instrucoes_basicas + #364, #127
+  static instrucoes_basicas + #365, #127
+  static instrucoes_basicas + #366, #127
+  static instrucoes_basicas + #367, #127
+  static instrucoes_basicas + #368, #127
+  static instrucoes_basicas + #369, #3967
+  static instrucoes_basicas + #370, #3967
+  static instrucoes_basicas + #371, #127
+  static instrucoes_basicas + #372, #3967
+  static instrucoes_basicas + #373, #127
+  static instrucoes_basicas + #374, #127
+  static instrucoes_basicas + #375, #127
+  static instrucoes_basicas + #376, #127
+  static instrucoes_basicas + #377, #127
+  static instrucoes_basicas + #378, #127
+  static instrucoes_basicas + #379, #127
+  static instrucoes_basicas + #380, #127
+  static instrucoes_basicas + #381, #127
+  static instrucoes_basicas + #382, #127
+  static instrucoes_basicas + #383, #127
+  static instrucoes_basicas + #384, #3967
+  static instrucoes_basicas + #385, #127
+  static instrucoes_basicas + #386, #127
+  static instrucoes_basicas + #387, #127
+  static instrucoes_basicas + #388, #127
+  static instrucoes_basicas + #389, #127
+  static instrucoes_basicas + #390, #3967
+  static instrucoes_basicas + #391, #127
+  static instrucoes_basicas + #392, #127
+  static instrucoes_basicas + #393, #127
+  static instrucoes_basicas + #394, #127
+  static instrucoes_basicas + #395, #127
+  static instrucoes_basicas + #396, #127
+  static instrucoes_basicas + #397, #127
+  static instrucoes_basicas + #398, #127
+  static instrucoes_basicas + #399, #2880
+
+  ;Linha 10
+  static instrucoes_basicas + #400, #2880
+  static instrucoes_basicas + #401, #3967
+  static instrucoes_basicas + #402, #3967
+  static instrucoes_basicas + #403, #127
+  static instrucoes_basicas + #404, #127
+  static instrucoes_basicas + #405, #127
+  static instrucoes_basicas + #406, #127
+  static instrucoes_basicas + #407, #127
+  static instrucoes_basicas + #408, #3967
+  static instrucoes_basicas + #409, #79
+  static instrucoes_basicas + #410, #83
+  static instrucoes_basicas + #411, #3967
+  static instrucoes_basicas + #412, #67
+  static instrucoes_basicas + #413, #79
+  static instrucoes_basicas + #414, #77
+  static instrucoes_basicas + #415, #65
+  static instrucoes_basicas + #416, #78
+  static instrucoes_basicas + #417, #68
+  static instrucoes_basicas + #418, #79
+  static instrucoes_basicas + #419, #83
+  static instrucoes_basicas + #420, #127
+  static instrucoes_basicas + #421, #66
+  static instrucoes_basicas + #422, #65
+  static instrucoes_basicas + #423, #83
+  static instrucoes_basicas + #424, #73
+  static instrucoes_basicas + #425, #67
+  static instrucoes_basicas + #426, #79
+  static instrucoes_basicas + #427, #83
+  static instrucoes_basicas + #428, #127
+  static instrucoes_basicas + #429, #83
+  static instrucoes_basicas + #430, #65
+  static instrucoes_basicas + #431, #79
+  static instrucoes_basicas + #432, #127
+  static instrucoes_basicas + #433, #127
+  static instrucoes_basicas + #434, #127
+  static instrucoes_basicas + #435, #127
+  static instrucoes_basicas + #436, #127
+  static instrucoes_basicas + #437, #3967
+  static instrucoes_basicas + #438, #127
+  static instrucoes_basicas + #439, #2880
+
+  ;Linha 11
+  static instrucoes_basicas + #440, #2880
+  static instrucoes_basicas + #441, #3967
+  static instrucoes_basicas + #442, #3967
+  static instrucoes_basicas + #443, #127
+  static instrucoes_basicas + #444, #127
+  static instrucoes_basicas + #445, #127
+  static instrucoes_basicas + #446, #127
+  static instrucoes_basicas + #447, #3967
+  static instrucoes_basicas + #448, #3967
+  static instrucoes_basicas + #449, #3967
+  static instrucoes_basicas + #450, #3967
+  static instrucoes_basicas + #451, #3967
+  static instrucoes_basicas + #452, #3967
+  static instrucoes_basicas + #453, #3967
+  static instrucoes_basicas + #454, #3967
+  static instrucoes_basicas + #455, #3967
+  static instrucoes_basicas + #456, #3967
+  static instrucoes_basicas + #457, #3967
+  static instrucoes_basicas + #458, #3967
+  static instrucoes_basicas + #459, #3967
+  static instrucoes_basicas + #460, #3967
+  static instrucoes_basicas + #461, #3967
+  static instrucoes_basicas + #462, #3967
+  static instrucoes_basicas + #463, #3967
+  static instrucoes_basicas + #464, #3967
+  static instrucoes_basicas + #465, #3967
+  static instrucoes_basicas + #466, #3967
+  static instrucoes_basicas + #467, #3967
+  static instrucoes_basicas + #468, #3967
+  static instrucoes_basicas + #469, #3967
+  static instrucoes_basicas + #470, #3967
+  static instrucoes_basicas + #471, #3967
+  static instrucoes_basicas + #472, #127
+  static instrucoes_basicas + #473, #127
+  static instrucoes_basicas + #474, #127
+  static instrucoes_basicas + #475, #127
+  static instrucoes_basicas + #476, #127
+  static instrucoes_basicas + #477, #3967
+  static instrucoes_basicas + #478, #3967
+  static instrucoes_basicas + #479, #2880
+
+  ;Linha 12
+  static instrucoes_basicas + #480, #2880
+  static instrucoes_basicas + #481, #3967
+  static instrucoes_basicas + #482, #3967
+  static instrucoes_basicas + #483, #127
+  static instrucoes_basicas + #484, #127
+  static instrucoes_basicas + #485, #127
+  static instrucoes_basicas + #486, #127
+  static instrucoes_basicas + #487, #64
+  static instrucoes_basicas + #488, #64
+  static instrucoes_basicas + #489, #64
+  static instrucoes_basicas + #490, #64
+  static instrucoes_basicas + #491, #64
+  static instrucoes_basicas + #492, #64
+  static instrucoes_basicas + #493, #64
+  static instrucoes_basicas + #494, #64
+  static instrucoes_basicas + #495, #64
+  static instrucoes_basicas + #496, #64
+  static instrucoes_basicas + #497, #64
+  static instrucoes_basicas + #498, #64
+  static instrucoes_basicas + #499, #64
+  static instrucoes_basicas + #500, #64
+  static instrucoes_basicas + #501, #64
+  static instrucoes_basicas + #502, #64
+  static instrucoes_basicas + #503, #64
+  static instrucoes_basicas + #504, #64
+  static instrucoes_basicas + #505, #64
+  static instrucoes_basicas + #506, #64
+  static instrucoes_basicas + #507, #64
+  static instrucoes_basicas + #508, #64
+  static instrucoes_basicas + #509, #64
+  static instrucoes_basicas + #510, #64
+  static instrucoes_basicas + #511, #64
+  static instrucoes_basicas + #512, #64
+  static instrucoes_basicas + #513, #64
+  static instrucoes_basicas + #514, #127
+  static instrucoes_basicas + #515, #127
+  static instrucoes_basicas + #516, #127
+  static instrucoes_basicas + #517, #3967
+  static instrucoes_basicas + #518, #3967
+  static instrucoes_basicas + #519, #2880
+
+  ;Linha 13
+  static instrucoes_basicas + #520, #2880
+  static instrucoes_basicas + #521, #3967
+  static instrucoes_basicas + #522, #127
+  static instrucoes_basicas + #523, #127
+  static instrucoes_basicas + #524, #127
+  static instrucoes_basicas + #525, #127
+  static instrucoes_basicas + #526, #127
+  static instrucoes_basicas + #527, #64
+  static instrucoes_basicas + #528, #3967
+  static instrucoes_basicas + #529, #3967
+  static instrucoes_basicas + #530, #3967
+  static instrucoes_basicas + #531, #3967
+  static instrucoes_basicas + #532, #3967
+  static instrucoes_basicas + #533, #3967
+  static instrucoes_basicas + #534, #3967
+  static instrucoes_basicas + #535, #3967
+  static instrucoes_basicas + #536, #3967
+  static instrucoes_basicas + #537, #3967
+  static instrucoes_basicas + #538, #3967
+  static instrucoes_basicas + #539, #3967
+  static instrucoes_basicas + #540, #3967
+  static instrucoes_basicas + #541, #3967
+  static instrucoes_basicas + #542, #3967
+  static instrucoes_basicas + #543, #3967
+  static instrucoes_basicas + #544, #3967
+  static instrucoes_basicas + #545, #3967
+  static instrucoes_basicas + #546, #3967
+  static instrucoes_basicas + #547, #3967
+  static instrucoes_basicas + #548, #3967
+  static instrucoes_basicas + #549, #3967
+  static instrucoes_basicas + #550, #3967
+  static instrucoes_basicas + #551, #3967
+  static instrucoes_basicas + #552, #3967
+  static instrucoes_basicas + #553, #64
+  static instrucoes_basicas + #554, #3967
+  static instrucoes_basicas + #555, #127
+  static instrucoes_basicas + #556, #127
+  static instrucoes_basicas + #557, #127
+  static instrucoes_basicas + #558, #3967
+  static instrucoes_basicas + #559, #2880
+
+  ;Linha 14
+  static instrucoes_basicas + #560, #2880
+  static instrucoes_basicas + #561, #3967
+  static instrucoes_basicas + #562, #127
+  static instrucoes_basicas + #563, #127
+  static instrucoes_basicas + #564, #127
+  static instrucoes_basicas + #565, #127
+  static instrucoes_basicas + #566, #127
+  static instrucoes_basicas + #567, #64
+  static instrucoes_basicas + #568, #127
+  static instrucoes_basicas + #569, #127
+  static instrucoes_basicas + #570, #127
+  static instrucoes_basicas + #571, #127
+  static instrucoes_basicas + #572, #127
+  static instrucoes_basicas + #573, #127
+  static instrucoes_basicas + #574, #127
+  static instrucoes_basicas + #575, #127
+  static instrucoes_basicas + #576, #127
+  static instrucoes_basicas + #577, #127
+  static instrucoes_basicas + #578, #127
+  static instrucoes_basicas + #579, #127
+  static instrucoes_basicas + #580, #127
+  static instrucoes_basicas + #581, #127
+  static instrucoes_basicas + #582, #127
+  static instrucoes_basicas + #583, #127
+  static instrucoes_basicas + #584, #3967
+  static instrucoes_basicas + #585, #127
+  static instrucoes_basicas + #586, #127
+  static instrucoes_basicas + #587, #127
+  static instrucoes_basicas + #588, #127
+  static instrucoes_basicas + #589, #127
+  static instrucoes_basicas + #590, #127
+  static instrucoes_basicas + #591, #3967
+  static instrucoes_basicas + #592, #3967
+  static instrucoes_basicas + #593, #64
+  static instrucoes_basicas + #594, #127
+  static instrucoes_basicas + #595, #127
+  static instrucoes_basicas + #596, #127
+  static instrucoes_basicas + #597, #127
+  static instrucoes_basicas + #598, #3967
+  static instrucoes_basicas + #599, #2880
+
+  ;Linha 15
+  static instrucoes_basicas + #600, #2880
+  static instrucoes_basicas + #601, #3967
+  static instrucoes_basicas + #602, #127
+  static instrucoes_basicas + #603, #127
+  static instrucoes_basicas + #604, #127
+  static instrucoes_basicas + #605, #127
+  static instrucoes_basicas + #606, #127
+  static instrucoes_basicas + #607, #64
+  static instrucoes_basicas + #608, #127
+  static instrucoes_basicas + #609, #127
+  static instrucoes_basicas + #610, #87
+  static instrucoes_basicas + #611, #45
+  static instrucoes_basicas + #612, #65
+  static instrucoes_basicas + #613, #78
+  static instrucoes_basicas + #614, #68
+  static instrucoes_basicas + #615, #65
+  static instrucoes_basicas + #616, #82
+  static instrucoes_basicas + #617, #127
+  static instrucoes_basicas + #618, #80
+  static instrucoes_basicas + #619, #65
+  static instrucoes_basicas + #620, #82
+  static instrucoes_basicas + #621, #65
+  static instrucoes_basicas + #622, #127
+  static instrucoes_basicas + #623, #67
+  static instrucoes_basicas + #624, #73
+  static instrucoes_basicas + #625, #77
+  static instrucoes_basicas + #626, #65
+  static instrucoes_basicas + #627, #3967
+  static instrucoes_basicas + #628, #3967
+  static instrucoes_basicas + #629, #3967
+  static instrucoes_basicas + #630, #127
+  static instrucoes_basicas + #631, #3967
+  static instrucoes_basicas + #632, #3967
+  static instrucoes_basicas + #633, #64
+  static instrucoes_basicas + #634, #127
+  static instrucoes_basicas + #635, #127
+  static instrucoes_basicas + #636, #127
+  static instrucoes_basicas + #637, #127
+  static instrucoes_basicas + #638, #3967
+  static instrucoes_basicas + #639, #2880
+
+  ;Linha 16
+  static instrucoes_basicas + #640, #2880
+  static instrucoes_basicas + #641, #3967
+  static instrucoes_basicas + #642, #127
+  static instrucoes_basicas + #643, #127
+  static instrucoes_basicas + #644, #127
+  static instrucoes_basicas + #645, #127
+  static instrucoes_basicas + #646, #127
+  static instrucoes_basicas + #647, #64
+  static instrucoes_basicas + #648, #127
+  static instrucoes_basicas + #649, #127
+  static instrucoes_basicas + #650, #127
+  static instrucoes_basicas + #651, #127
+  static instrucoes_basicas + #652, #3967
+  static instrucoes_basicas + #653, #127
+  static instrucoes_basicas + #654, #127
+  static instrucoes_basicas + #655, #127
+  static instrucoes_basicas + #656, #127
+  static instrucoes_basicas + #657, #127
+  static instrucoes_basicas + #658, #127
+  static instrucoes_basicas + #659, #127
+  static instrucoes_basicas + #660, #127
+  static instrucoes_basicas + #661, #127
+  static instrucoes_basicas + #662, #127
+  static instrucoes_basicas + #663, #127
+  static instrucoes_basicas + #664, #127
+  static instrucoes_basicas + #665, #127
+  static instrucoes_basicas + #666, #127
+  static instrucoes_basicas + #667, #127
+  static instrucoes_basicas + #668, #127
+  static instrucoes_basicas + #669, #127
+  static instrucoes_basicas + #670, #127
+  static instrucoes_basicas + #671, #127
+  static instrucoes_basicas + #672, #3967
+  static instrucoes_basicas + #673, #64
+  static instrucoes_basicas + #674, #127
+  static instrucoes_basicas + #675, #127
+  static instrucoes_basicas + #676, #127
+  static instrucoes_basicas + #677, #127
+  static instrucoes_basicas + #678, #3967
+  static instrucoes_basicas + #679, #2880
+
+  ;Linha 17
+  static instrucoes_basicas + #680, #2880
+  static instrucoes_basicas + #681, #3967
+  static instrucoes_basicas + #682, #127
+  static instrucoes_basicas + #683, #127
+  static instrucoes_basicas + #684, #127
+  static instrucoes_basicas + #685, #127
+  static instrucoes_basicas + #686, #127
+  static instrucoes_basicas + #687, #64
+  static instrucoes_basicas + #688, #127
+  static instrucoes_basicas + #689, #127
+  static instrucoes_basicas + #690, #65
+  static instrucoes_basicas + #691, #45
+  static instrucoes_basicas + #692, #65
+  static instrucoes_basicas + #693, #78
+  static instrucoes_basicas + #694, #68
+  static instrucoes_basicas + #695, #65
+  static instrucoes_basicas + #696, #82
+  static instrucoes_basicas + #697, #127
+  static instrucoes_basicas + #698, #80
+  static instrucoes_basicas + #699, #65
+  static instrucoes_basicas + #700, #82
+  static instrucoes_basicas + #701, #65
+  static instrucoes_basicas + #702, #127
+  static instrucoes_basicas + #703, #69
+  static instrucoes_basicas + #704, #83
+  static instrucoes_basicas + #705, #81
+  static instrucoes_basicas + #706, #85
+  static instrucoes_basicas + #707, #69
+  static instrucoes_basicas + #708, #82
+  static instrucoes_basicas + #709, #68
+  static instrucoes_basicas + #710, #65
+  static instrucoes_basicas + #711, #127
+  static instrucoes_basicas + #712, #127
+  static instrucoes_basicas + #713, #64
+  static instrucoes_basicas + #714, #127
+  static instrucoes_basicas + #715, #127
+  static instrucoes_basicas + #716, #127
+  static instrucoes_basicas + #717, #127
+  static instrucoes_basicas + #718, #3967
+  static instrucoes_basicas + #719, #2880
+
+  ;Linha 18
+  static instrucoes_basicas + #720, #2880
+  static instrucoes_basicas + #721, #127
+  static instrucoes_basicas + #722, #127
+  static instrucoes_basicas + #723, #127
+  static instrucoes_basicas + #724, #127
+  static instrucoes_basicas + #725, #127
+  static instrucoes_basicas + #726, #127
+  static instrucoes_basicas + #727, #64
+  static instrucoes_basicas + #728, #127
+  static instrucoes_basicas + #729, #127
+  static instrucoes_basicas + #730, #127
+  static instrucoes_basicas + #731, #127
+  static instrucoes_basicas + #732, #127
+  static instrucoes_basicas + #733, #127
+  static instrucoes_basicas + #734, #127
+  static instrucoes_basicas + #735, #127
+  static instrucoes_basicas + #736, #127
+  static instrucoes_basicas + #737, #127
+  static instrucoes_basicas + #738, #127
+  static instrucoes_basicas + #739, #127
+  static instrucoes_basicas + #740, #127
+  static instrucoes_basicas + #741, #127
+  static instrucoes_basicas + #742, #127
+  static instrucoes_basicas + #743, #127
+  static instrucoes_basicas + #744, #127
+  static instrucoes_basicas + #745, #127
+  static instrucoes_basicas + #746, #127
+  static instrucoes_basicas + #747, #127
+  static instrucoes_basicas + #748, #127
+  static instrucoes_basicas + #749, #127
+  static instrucoes_basicas + #750, #127
+  static instrucoes_basicas + #751, #127
+  static instrucoes_basicas + #752, #127
+  static instrucoes_basicas + #753, #64
+  static instrucoes_basicas + #754, #127
+  static instrucoes_basicas + #755, #127
+  static instrucoes_basicas + #756, #127
+  static instrucoes_basicas + #757, #127
+  static instrucoes_basicas + #758, #3967
+  static instrucoes_basicas + #759, #2880
+
+  ;Linha 19
+  static instrucoes_basicas + #760, #2880
+  static instrucoes_basicas + #761, #127
+  static instrucoes_basicas + #762, #127
+  static instrucoes_basicas + #763, #127
+  static instrucoes_basicas + #764, #127
+  static instrucoes_basicas + #765, #127
+  static instrucoes_basicas + #766, #127
+  static instrucoes_basicas + #767, #64
+  static instrucoes_basicas + #768, #127
+  static instrucoes_basicas + #769, #127
+  static instrucoes_basicas + #770, #83
+  static instrucoes_basicas + #771, #45
+  static instrucoes_basicas + #772, #65
+  static instrucoes_basicas + #773, #78
+  static instrucoes_basicas + #774, #68
+  static instrucoes_basicas + #775, #65
+  static instrucoes_basicas + #776, #82
+  static instrucoes_basicas + #777, #127
+  static instrucoes_basicas + #778, #80
+  static instrucoes_basicas + #779, #65
+  static instrucoes_basicas + #780, #82
+  static instrucoes_basicas + #781, #65
+  static instrucoes_basicas + #782, #127
+  static instrucoes_basicas + #783, #66
+  static instrucoes_basicas + #784, #65
+  static instrucoes_basicas + #785, #73
+  static instrucoes_basicas + #786, #88
+  static instrucoes_basicas + #787, #79
+  static instrucoes_basicas + #788, #127
+  static instrucoes_basicas + #789, #127
+  static instrucoes_basicas + #790, #127
+  static instrucoes_basicas + #791, #127
+  static instrucoes_basicas + #792, #127
+  static instrucoes_basicas + #793, #64
+  static instrucoes_basicas + #794, #127
+  static instrucoes_basicas + #795, #127
+  static instrucoes_basicas + #796, #127
+  static instrucoes_basicas + #797, #127
+  static instrucoes_basicas + #798, #3967
+  static instrucoes_basicas + #799, #2880
+
+  ;Linha 20
+  static instrucoes_basicas + #800, #2880
+  static instrucoes_basicas + #801, #127
+  static instrucoes_basicas + #802, #127
+  static instrucoes_basicas + #803, #127
+  static instrucoes_basicas + #804, #127
+  static instrucoes_basicas + #805, #127
+  static instrucoes_basicas + #806, #127
+  static instrucoes_basicas + #807, #64
+  static instrucoes_basicas + #808, #127
+  static instrucoes_basicas + #809, #127
+  static instrucoes_basicas + #810, #3967
+  static instrucoes_basicas + #811, #127
+  static instrucoes_basicas + #812, #127
+  static instrucoes_basicas + #813, #127
+  static instrucoes_basicas + #814, #127
+  static instrucoes_basicas + #815, #127
+  static instrucoes_basicas + #816, #127
+  static instrucoes_basicas + #817, #127
+  static instrucoes_basicas + #818, #127
+  static instrucoes_basicas + #819, #127
+  static instrucoes_basicas + #820, #127
+  static instrucoes_basicas + #821, #127
+  static instrucoes_basicas + #822, #127
+  static instrucoes_basicas + #823, #127
+  static instrucoes_basicas + #824, #3967
+  static instrucoes_basicas + #825, #127
+  static instrucoes_basicas + #826, #127
+  static instrucoes_basicas + #827, #127
+  static instrucoes_basicas + #828, #127
+  static instrucoes_basicas + #829, #127
+  static instrucoes_basicas + #830, #3967
+  static instrucoes_basicas + #831, #127
+  static instrucoes_basicas + #832, #127
+  static instrucoes_basicas + #833, #64
+  static instrucoes_basicas + #834, #127
+  static instrucoes_basicas + #835, #127
+  static instrucoes_basicas + #836, #127
+  static instrucoes_basicas + #837, #127
+  static instrucoes_basicas + #838, #127
+  static instrucoes_basicas + #839, #2880
+
+  ;Linha 21
+  static instrucoes_basicas + #840, #2880
+  static instrucoes_basicas + #841, #127
+  static instrucoes_basicas + #842, #127
+  static instrucoes_basicas + #843, #127
+  static instrucoes_basicas + #844, #127
+  static instrucoes_basicas + #845, #127
+  static instrucoes_basicas + #846, #127
+  static instrucoes_basicas + #847, #64
+  static instrucoes_basicas + #848, #127
+  static instrucoes_basicas + #849, #127
+  static instrucoes_basicas + #850, #68
+  static instrucoes_basicas + #851, #45
+  static instrucoes_basicas + #852, #65
+  static instrucoes_basicas + #853, #78
+  static instrucoes_basicas + #854, #68
+  static instrucoes_basicas + #855, #65
+  static instrucoes_basicas + #856, #82
+  static instrucoes_basicas + #857, #127
+  static instrucoes_basicas + #858, #80
+  static instrucoes_basicas + #859, #65
+  static instrucoes_basicas + #860, #82
+  static instrucoes_basicas + #861, #65
+  static instrucoes_basicas + #862, #127
+  static instrucoes_basicas + #863, #68
+  static instrucoes_basicas + #864, #73
+  static instrucoes_basicas + #865, #82
+  static instrucoes_basicas + #866, #69
+  static instrucoes_basicas + #867, #73
+  static instrucoes_basicas + #868, #84
+  static instrucoes_basicas + #869, #65
+  static instrucoes_basicas + #870, #3967
+  static instrucoes_basicas + #871, #3967
+  static instrucoes_basicas + #872, #127
+  static instrucoes_basicas + #873, #64
+  static instrucoes_basicas + #874, #127
+  static instrucoes_basicas + #875, #127
+  static instrucoes_basicas + #876, #127
+  static instrucoes_basicas + #877, #127
+  static instrucoes_basicas + #878, #127
+  static instrucoes_basicas + #879, #2880
+
+  ;Linha 22
+  static instrucoes_basicas + #880, #2880
+  static instrucoes_basicas + #881, #127
+  static instrucoes_basicas + #882, #127
+  static instrucoes_basicas + #883, #127
+  static instrucoes_basicas + #884, #127
+  static instrucoes_basicas + #885, #127
+  static instrucoes_basicas + #886, #127
+  static instrucoes_basicas + #887, #64
+  static instrucoes_basicas + #888, #127
+  static instrucoes_basicas + #889, #127
+  static instrucoes_basicas + #890, #127
+  static instrucoes_basicas + #891, #127
+  static instrucoes_basicas + #892, #127
+  static instrucoes_basicas + #893, #127
+  static instrucoes_basicas + #894, #127
+  static instrucoes_basicas + #895, #127
+  static instrucoes_basicas + #896, #127
+  static instrucoes_basicas + #897, #127
+  static instrucoes_basicas + #898, #127
+  static instrucoes_basicas + #899, #127
+  static instrucoes_basicas + #900, #127
+  static instrucoes_basicas + #901, #127
+  static instrucoes_basicas + #902, #127
+  static instrucoes_basicas + #903, #127
+  static instrucoes_basicas + #904, #127
+  static instrucoes_basicas + #905, #127
+  static instrucoes_basicas + #906, #127
+  static instrucoes_basicas + #907, #127
+  static instrucoes_basicas + #908, #127
+  static instrucoes_basicas + #909, #127
+  static instrucoes_basicas + #910, #127
+  static instrucoes_basicas + #911, #127
+  static instrucoes_basicas + #912, #127
+  static instrucoes_basicas + #913, #64
+  static instrucoes_basicas + #914, #127
+  static instrucoes_basicas + #915, #127
+  static instrucoes_basicas + #916, #127
+  static instrucoes_basicas + #917, #127
+  static instrucoes_basicas + #918, #127
+  static instrucoes_basicas + #919, #2880
+
+  ;Linha 23
+  static instrucoes_basicas + #920, #2880
+  static instrucoes_basicas + #921, #127
+  static instrucoes_basicas + #922, #127
+  static instrucoes_basicas + #923, #127
+  static instrucoes_basicas + #924, #127
+  static instrucoes_basicas + #925, #127
+  static instrucoes_basicas + #926, #127
+  static instrucoes_basicas + #927, #64
+  static instrucoes_basicas + #928, #3967
+  static instrucoes_basicas + #929, #3967
+  static instrucoes_basicas + #930, #3967
+  static instrucoes_basicas + #931, #3967
+  static instrucoes_basicas + #932, #3967
+  static instrucoes_basicas + #933, #3967
+  static instrucoes_basicas + #934, #3967
+  static instrucoes_basicas + #935, #3967
+  static instrucoes_basicas + #936, #3967
+  static instrucoes_basicas + #937, #127
+  static instrucoes_basicas + #938, #127
+  static instrucoes_basicas + #939, #127
+  static instrucoes_basicas + #940, #127
+  static instrucoes_basicas + #941, #127
+  static instrucoes_basicas + #942, #127
+  static instrucoes_basicas + #943, #127
+  static instrucoes_basicas + #944, #127
+  static instrucoes_basicas + #945, #127
+  static instrucoes_basicas + #946, #127
+  static instrucoes_basicas + #947, #127
+  static instrucoes_basicas + #948, #127
+  static instrucoes_basicas + #949, #127
+  static instrucoes_basicas + #950, #127
+  static instrucoes_basicas + #951, #127
+  static instrucoes_basicas + #952, #127
+  static instrucoes_basicas + #953, #64
+  static instrucoes_basicas + #954, #127
+  static instrucoes_basicas + #955, #127
+  static instrucoes_basicas + #956, #127
+  static instrucoes_basicas + #957, #127
+  static instrucoes_basicas + #958, #127
+  static instrucoes_basicas + #959, #2880
+
+  ;Linha 24
+  static instrucoes_basicas + #960, #2880
+  static instrucoes_basicas + #961, #127
+  static instrucoes_basicas + #962, #127
+  static instrucoes_basicas + #963, #127
+  static instrucoes_basicas + #964, #127
+  static instrucoes_basicas + #965, #127
+  static instrucoes_basicas + #966, #127
+  static instrucoes_basicas + #967, #64
+  static instrucoes_basicas + #968, #64
+  static instrucoes_basicas + #969, #64
+  static instrucoes_basicas + #970, #64
+  static instrucoes_basicas + #971, #64
+  static instrucoes_basicas + #972, #64
+  static instrucoes_basicas + #973, #64
+  static instrucoes_basicas + #974, #64
+  static instrucoes_basicas + #975, #64
+  static instrucoes_basicas + #976, #64
+  static instrucoes_basicas + #977, #64
+  static instrucoes_basicas + #978, #64
+  static instrucoes_basicas + #979, #64
+  static instrucoes_basicas + #980, #64
+  static instrucoes_basicas + #981, #64
+  static instrucoes_basicas + #982, #64
+  static instrucoes_basicas + #983, #64
+  static instrucoes_basicas + #984, #64
+  static instrucoes_basicas + #985, #64
+  static instrucoes_basicas + #986, #64
+  static instrucoes_basicas + #987, #64
+  static instrucoes_basicas + #988, #64
+  static instrucoes_basicas + #989, #64
+  static instrucoes_basicas + #990, #64
+  static instrucoes_basicas + #991, #64
+  static instrucoes_basicas + #992, #64
+  static instrucoes_basicas + #993, #64
+  static instrucoes_basicas + #994, #127
+  static instrucoes_basicas + #995, #127
+  static instrucoes_basicas + #996, #127
+  static instrucoes_basicas + #997, #127
+  static instrucoes_basicas + #998, #127
+  static instrucoes_basicas + #999, #2880
+
+  ;Linha 25
+  static instrucoes_basicas + #1000, #2880
+  static instrucoes_basicas + #1001, #127
+  static instrucoes_basicas + #1002, #127
+  static instrucoes_basicas + #1003, #127
+  static instrucoes_basicas + #1004, #127
+  static instrucoes_basicas + #1005, #127
+  static instrucoes_basicas + #1006, #127
+  static instrucoes_basicas + #1007, #127
+  static instrucoes_basicas + #1008, #127
+  static instrucoes_basicas + #1009, #127
+  static instrucoes_basicas + #1010, #127
+  static instrucoes_basicas + #1011, #127
+  static instrucoes_basicas + #1012, #127
+  static instrucoes_basicas + #1013, #127
+  static instrucoes_basicas + #1014, #127
+  static instrucoes_basicas + #1015, #127
+  static instrucoes_basicas + #1016, #127
+  static instrucoes_basicas + #1017, #127
+  static instrucoes_basicas + #1018, #127
+  static instrucoes_basicas + #1019, #127
+  static instrucoes_basicas + #1020, #127
+  static instrucoes_basicas + #1021, #127
+  static instrucoes_basicas + #1022, #127
+  static instrucoes_basicas + #1023, #127
+  static instrucoes_basicas + #1024, #127
+  static instrucoes_basicas + #1025, #3967
+  static instrucoes_basicas + #1026, #3967
+  static instrucoes_basicas + #1027, #3967
+  static instrucoes_basicas + #1028, #3967
+  static instrucoes_basicas + #1029, #127
+  static instrucoes_basicas + #1030, #127
+  static instrucoes_basicas + #1031, #127
+  static instrucoes_basicas + #1032, #127
+  static instrucoes_basicas + #1033, #127
+  static instrucoes_basicas + #1034, #127
+  static instrucoes_basicas + #1035, #127
+  static instrucoes_basicas + #1036, #127
+  static instrucoes_basicas + #1037, #127
+  static instrucoes_basicas + #1038, #127
+  static instrucoes_basicas + #1039, #2880
+
+  ;Linha 26
+  static instrucoes_basicas + #1040, #2880
+  static instrucoes_basicas + #1041, #127
+  static instrucoes_basicas + #1042, #127
+  static instrucoes_basicas + #1043, #127
+  static instrucoes_basicas + #1044, #127
+  static instrucoes_basicas + #1045, #127
+  static instrucoes_basicas + #1046, #127
+  static instrucoes_basicas + #1047, #127
+  static instrucoes_basicas + #1048, #127
+  static instrucoes_basicas + #1049, #127
+  static instrucoes_basicas + #1050, #127
+  static instrucoes_basicas + #1051, #127
+  static instrucoes_basicas + #1052, #127
+  static instrucoes_basicas + #1053, #127
+  static instrucoes_basicas + #1054, #127
+  static instrucoes_basicas + #1055, #127
+  static instrucoes_basicas + #1056, #3967
+  static instrucoes_basicas + #1057, #3967
+  static instrucoes_basicas + #1058, #3967
+  static instrucoes_basicas + #1059, #3967
+  static instrucoes_basicas + #1060, #3967
+  static instrucoes_basicas + #1061, #3967
+  static instrucoes_basicas + #1062, #3967
+  static instrucoes_basicas + #1063, #3967
+  static instrucoes_basicas + #1064, #3967
+  static instrucoes_basicas + #1065, #127
+  static instrucoes_basicas + #1066, #127
+  static instrucoes_basicas + #1067, #127
+  static instrucoes_basicas + #1068, #127
+  static instrucoes_basicas + #1069, #127
+  static instrucoes_basicas + #1070, #127
+  static instrucoes_basicas + #1071, #127
+  static instrucoes_basicas + #1072, #127
+  static instrucoes_basicas + #1073, #127
+  static instrucoes_basicas + #1074, #127
+  static instrucoes_basicas + #1075, #127
+  static instrucoes_basicas + #1076, #127
+  static instrucoes_basicas + #1077, #127
+  static instrucoes_basicas + #1078, #127
+  static instrucoes_basicas + #1079, #2880
+
+  ;Linha 27
+  static instrucoes_basicas + #1080, #2880
+  static instrucoes_basicas + #1081, #127
+  static instrucoes_basicas + #1082, #127
+  static instrucoes_basicas + #1083, #3967
+  static instrucoes_basicas + #1084, #3967
+  static instrucoes_basicas + #1085, #3967
+  static instrucoes_basicas + #1086, #3967
+  static instrucoes_basicas + #1087, #3967
+  static instrucoes_basicas + #1088, #66
+  static instrucoes_basicas + #1089, #69
+  static instrucoes_basicas + #1090, #66
+  static instrucoes_basicas + #1091, #65
+  static instrucoes_basicas + #1092, #77
+  static instrucoes_basicas + #1093, #3967
+  static instrucoes_basicas + #1094, #65
+  static instrucoes_basicas + #1095, #71
+  static instrucoes_basicas + #1096, #85
+  static instrucoes_basicas + #1097, #65
+  static instrucoes_basicas + #1098, #3967
+  static instrucoes_basicas + #1099, #69
+  static instrucoes_basicas + #1100, #3967
+  static instrucoes_basicas + #1101, #67
+  static instrucoes_basicas + #1102, #79
+  static instrucoes_basicas + #1103, #77
+  static instrucoes_basicas + #1104, #65
+  static instrucoes_basicas + #1105, #77
+  static instrucoes_basicas + #1106, #3967
+  static instrucoes_basicas + #1107, #70
+  static instrucoes_basicas + #1108, #82
+  static instrucoes_basicas + #1109, #85
+  static instrucoes_basicas + #1110, #84
+  static instrucoes_basicas + #1111, #65
+  static instrucoes_basicas + #1112, #83
+  static instrucoes_basicas + #1113, #127
+  static instrucoes_basicas + #1114, #127
+  static instrucoes_basicas + #1115, #127
+  static instrucoes_basicas + #1116, #127
+  static instrucoes_basicas + #1117, #127
+  static instrucoes_basicas + #1118, #127
+  static instrucoes_basicas + #1119, #2880
+
+  ;Linha 28
+  static instrucoes_basicas + #1120, #2880
+  static instrucoes_basicas + #1121, #127
+  static instrucoes_basicas + #1122, #127
+  static instrucoes_basicas + #1123, #127
+  static instrucoes_basicas + #1124, #127
+  static instrucoes_basicas + #1125, #127
+  static instrucoes_basicas + #1126, #127
+  static instrucoes_basicas + #1127, #127
+  static instrucoes_basicas + #1128, #127
+  static instrucoes_basicas + #1129, #127
+  static instrucoes_basicas + #1130, #127
+  static instrucoes_basicas + #1131, #127
+  static instrucoes_basicas + #1132, #127
+  static instrucoes_basicas + #1133, #127
+  static instrucoes_basicas + #1134, #127
+  static instrucoes_basicas + #1135, #3967
+  static instrucoes_basicas + #1136, #127
+  static instrucoes_basicas + #1137, #127
+  static instrucoes_basicas + #1138, #127
+  static instrucoes_basicas + #1139, #127
+  static instrucoes_basicas + #1140, #127
+  static instrucoes_basicas + #1141, #127
+  static instrucoes_basicas + #1142, #127
+  static instrucoes_basicas + #1143, #127
+  static instrucoes_basicas + #1144, #127
+  static instrucoes_basicas + #1145, #127
+  static instrucoes_basicas + #1146, #127
+  static instrucoes_basicas + #1147, #127
+  static instrucoes_basicas + #1148, #127
+  static instrucoes_basicas + #1149, #127
+  static instrucoes_basicas + #1150, #127
+  static instrucoes_basicas + #1151, #127
+  static instrucoes_basicas + #1152, #127
+  static instrucoes_basicas + #1153, #127
+  static instrucoes_basicas + #1154, #127
+  static instrucoes_basicas + #1155, #127
+  static instrucoes_basicas + #1156, #127
+  static instrucoes_basicas + #1157, #127
+  static instrucoes_basicas + #1158, #127
+  static instrucoes_basicas + #1159, #2880
+
+  ;Linha 29
+  static instrucoes_basicas + #1160, #2880
+  static instrucoes_basicas + #1161, #2880
+  static instrucoes_basicas + #1162, #2880
+  static instrucoes_basicas + #1163, #2880
+  static instrucoes_basicas + #1164, #2880
+  static instrucoes_basicas + #1165, #2880
+  static instrucoes_basicas + #1166, #2880
+  static instrucoes_basicas + #1167, #2880
+  static instrucoes_basicas + #1168, #2880
+  static instrucoes_basicas + #1169, #2880
+  static instrucoes_basicas + #1170, #2880
+  static instrucoes_basicas + #1171, #2880
+  static instrucoes_basicas + #1172, #2880
+  static instrucoes_basicas + #1173, #2880
+  static instrucoes_basicas + #1174, #2880
+  static instrucoes_basicas + #1175, #2880
+  static instrucoes_basicas + #1176, #2880
+  static instrucoes_basicas + #1177, #2880
+  static instrucoes_basicas + #1178, #2880
+  static instrucoes_basicas + #1179, #2880
+  static instrucoes_basicas + #1180, #2880
+  static instrucoes_basicas + #1181, #2880
+  static instrucoes_basicas + #1182, #2880
+  static instrucoes_basicas + #1183, #2880
+  static instrucoes_basicas + #1184, #2880
+  static instrucoes_basicas + #1185, #2880
+  static instrucoes_basicas + #1186, #2880
+  static instrucoes_basicas + #1187, #2880
+  static instrucoes_basicas + #1188, #2880
+  static instrucoes_basicas + #1189, #2880
+  static instrucoes_basicas + #1190, #2880
+  static instrucoes_basicas + #1191, #2880
+  static instrucoes_basicas + #1192, #2880
+  static instrucoes_basicas + #1193, #2880
+  static instrucoes_basicas + #1194, #2880
+  static instrucoes_basicas + #1195, #2880
+  static instrucoes_basicas + #1196, #2880
+  static instrucoes_basicas + #1197, #2880
+  static instrucoes_basicas + #1198, #2880
+  static instrucoes_basicas + #1199, #2880
+
+printinstrucoes_basicasScreen:
+  push R0
+  push R1
+  push R2
+  push R3
+
+  loadn R0, #instrucoes_basicas
+  loadn R1, #0
+  loadn R2, #1200
+
+printinstrucoes_basicasScreenLoop:
+
+  add R3,R0,R1
+  loadi R3, R3
+  outchar R3, R1
+  inc R1
+  cmp R1, R2
+
+  jne printinstrucoes_basicasScreenLoop
+
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
 
 printCobraScreen:
 
@@ -1303,7 +2625,1297 @@ printCobraScreen:
   pop r1
   pop r0
   rts
+ 
+tela_final_fix:
+  static tela_final_fix + #0, #2880
+  static tela_final_fix + #1, #2880
+  static tela_final_fix + #2, #2880
+  static tela_final_fix + #3, #2880
+  static tela_final_fix + #4, #2880
+  static tela_final_fix + #5, #2880
+  static tela_final_fix + #6, #2880
+  static tela_final_fix + #7, #2880
+  static tela_final_fix + #8, #2880
+  static tela_final_fix + #9, #2880
+  static tela_final_fix + #10, #2880
+  static tela_final_fix + #11, #2880
+  static tela_final_fix + #12, #2880
+  static tela_final_fix + #13, #2880
+  static tela_final_fix + #14, #2880
+  static tela_final_fix + #15, #2880
+  static tela_final_fix + #16, #2880
+  static tela_final_fix + #17, #2880
+  static tela_final_fix + #18, #2880
+  static tela_final_fix + #19, #2880
+  static tela_final_fix + #20, #2880
+  static tela_final_fix + #21, #2880
+  static tela_final_fix + #22, #2880
+  static tela_final_fix + #23, #2880
+  static tela_final_fix + #24, #2880
+  static tela_final_fix + #25, #2880
+  static tela_final_fix + #26, #2880
+  static tela_final_fix + #27, #2880
+  static tela_final_fix + #28, #2880
+  static tela_final_fix + #29, #2880
+  static tela_final_fix + #30, #2880
+  static tela_final_fix + #31, #2880
+  static tela_final_fix + #32, #2880
+  static tela_final_fix + #33, #2880
+  static tela_final_fix + #34, #2880
+  static tela_final_fix + #35, #2880
+  static tela_final_fix + #36, #2880
+  static tela_final_fix + #37, #2880
+  static tela_final_fix + #38, #2880
+  static tela_final_fix + #39, #2880
 
+  ;Linha 1
+  static tela_final_fix + #40, #2880
+  static tela_final_fix + #41, #3967
+  static tela_final_fix + #42, #3967
+  static tela_final_fix + #43, #3967
+  static tela_final_fix + #44, #3967
+  static tela_final_fix + #45, #3967
+  static tela_final_fix + #46, #3967
+  static tela_final_fix + #47, #3967
+  static tela_final_fix + #48, #3967
+  static tela_final_fix + #49, #3967
+  static tela_final_fix + #50, #3967
+  static tela_final_fix + #51, #3967
+  static tela_final_fix + #52, #3967
+  static tela_final_fix + #53, #3967
+  static tela_final_fix + #54, #3967
+  static tela_final_fix + #55, #3967
+  static tela_final_fix + #56, #3967
+  static tela_final_fix + #57, #3967
+  static tela_final_fix + #58, #3967
+  static tela_final_fix + #59, #3967
+  static tela_final_fix + #60, #3967
+  static tela_final_fix + #61, #3967
+  static tela_final_fix + #62, #3967
+  static tela_final_fix + #63, #3967
+  static tela_final_fix + #64, #3967
+  static tela_final_fix + #65, #3967
+  static tela_final_fix + #66, #3967
+  static tela_final_fix + #67, #3967
+  static tela_final_fix + #68, #3967
+  static tela_final_fix + #69, #3967
+  static tela_final_fix + #70, #3967
+  static tela_final_fix + #71, #3967
+  static tela_final_fix + #72, #3967
+  static tela_final_fix + #73, #3967
+  static tela_final_fix + #74, #3967
+  static tela_final_fix + #75, #3967
+  static tela_final_fix + #76, #3967
+  static tela_final_fix + #77, #3967
+  static tela_final_fix + #78, #3967
+  static tela_final_fix + #79, #2880
+
+  ;Linha 2
+  static tela_final_fix + #80, #2880
+  static tela_final_fix + #81, #3967
+  static tela_final_fix + #82, #3967
+  static tela_final_fix + #83, #3967
+  static tela_final_fix + #84, #3967
+  static tela_final_fix + #85, #3967
+  static tela_final_fix + #86, #3967
+  static tela_final_fix + #87, #3967
+  static tela_final_fix + #88, #3967
+  static tela_final_fix + #89, #3967
+  static tela_final_fix + #90, #3967
+  static tela_final_fix + #91, #3967
+  static tela_final_fix + #92, #3967
+  static tela_final_fix + #93, #3967
+  static tela_final_fix + #94, #3967
+  static tela_final_fix + #95, #3967
+  static tela_final_fix + #96, #3967
+  static tela_final_fix + #97, #3967
+  static tela_final_fix + #98, #3967
+  static tela_final_fix + #99, #3967
+  static tela_final_fix + #100, #3967
+  static tela_final_fix + #101, #3967
+  static tela_final_fix + #102, #3967
+  static tela_final_fix + #103, #3967
+  static tela_final_fix + #104, #3967
+  static tela_final_fix + #105, #3967
+  static tela_final_fix + #106, #3967
+  static tela_final_fix + #107, #3967
+  static tela_final_fix + #108, #3967
+  static tela_final_fix + #109, #3967
+  static tela_final_fix + #110, #3967
+  static tela_final_fix + #111, #3967
+  static tela_final_fix + #112, #3967
+  static tela_final_fix + #113, #3967
+  static tela_final_fix + #114, #3967
+  static tela_final_fix + #115, #3967
+  static tela_final_fix + #116, #3967
+  static tela_final_fix + #117, #3967
+  static tela_final_fix + #118, #3967
+  static tela_final_fix + #119, #2880
+
+  ;Linha 3
+  static tela_final_fix + #120, #2880
+  static tela_final_fix + #121, #3967
+  static tela_final_fix + #122, #3967
+  static tela_final_fix + #123, #3967
+  static tela_final_fix + #124, #3967
+  static tela_final_fix + #125, #3967
+  static tela_final_fix + #126, #3967
+  static tela_final_fix + #127, #3967
+  static tela_final_fix + #128, #3967
+  static tela_final_fix + #129, #3967
+  static tela_final_fix + #130, #3967
+  static tela_final_fix + #131, #3967
+  static tela_final_fix + #132, #3967
+  static tela_final_fix + #133, #3967
+  static tela_final_fix + #134, #3967
+  static tela_final_fix + #135, #3967
+  static tela_final_fix + #136, #3967
+  static tela_final_fix + #137, #3967
+  static tela_final_fix + #138, #3967
+  static tela_final_fix + #139, #3967
+  static tela_final_fix + #140, #3967
+  static tela_final_fix + #141, #3967
+  static tela_final_fix + #142, #3967
+  static tela_final_fix + #143, #3967
+  static tela_final_fix + #144, #3967
+  static tela_final_fix + #145, #3967
+  static tela_final_fix + #146, #3967
+  static tela_final_fix + #147, #3967
+  static tela_final_fix + #148, #3967
+  static tela_final_fix + #149, #3967
+  static tela_final_fix + #150, #3967
+  static tela_final_fix + #151, #3967
+  static tela_final_fix + #152, #3967
+  static tela_final_fix + #153, #3967
+  static tela_final_fix + #154, #3967
+  static tela_final_fix + #155, #3967
+  static tela_final_fix + #156, #3967
+  static tela_final_fix + #157, #3967
+  static tela_final_fix + #158, #3967
+  static tela_final_fix + #159, #2880
+
+  ;Linha 4
+  static tela_final_fix + #160, #2880
+  static tela_final_fix + #161, #3967
+  static tela_final_fix + #162, #3967
+  static tela_final_fix + #163, #3967
+  static tela_final_fix + #164, #3967
+  static tela_final_fix + #165, #3967
+  static tela_final_fix + #166, #3967
+  static tela_final_fix + #167, #3967
+  static tela_final_fix + #168, #3967
+  static tela_final_fix + #169, #3967
+  static tela_final_fix + #170, #3967
+  static tela_final_fix + #171, #3967
+  static tela_final_fix + #172, #3967
+  static tela_final_fix + #173, #3967
+  static tela_final_fix + #174, #3967
+  static tela_final_fix + #175, #3967
+  static tela_final_fix + #176, #3967
+  static tela_final_fix + #177, #3967
+  static tela_final_fix + #178, #3967
+  static tela_final_fix + #179, #3967
+  static tela_final_fix + #180, #3967
+  static tela_final_fix + #181, #3967
+  static tela_final_fix + #182, #3967
+  static tela_final_fix + #183, #3967
+  static tela_final_fix + #184, #3967
+  static tela_final_fix + #185, #3967
+  static tela_final_fix + #186, #3967
+  static tela_final_fix + #187, #3967
+  static tela_final_fix + #188, #3967
+  static tela_final_fix + #189, #3967
+  static tela_final_fix + #190, #3967
+  static tela_final_fix + #191, #3967
+  static tela_final_fix + #192, #3967
+  static tela_final_fix + #193, #3967
+  static tela_final_fix + #194, #3967
+  static tela_final_fix + #195, #3967
+  static tela_final_fix + #196, #3967
+  static tela_final_fix + #197, #3967
+  static tela_final_fix + #198, #3967
+  static tela_final_fix + #199, #2880
+
+  ;Linha 5
+  static tela_final_fix + #200, #2880
+  static tela_final_fix + #201, #3967
+  static tela_final_fix + #202, #3967
+  static tela_final_fix + #203, #3967
+  static tela_final_fix + #204, #3967
+  static tela_final_fix + #205, #3967
+  static tela_final_fix + #206, #3967
+  static tela_final_fix + #207, #3967
+  static tela_final_fix + #208, #3967
+  static tela_final_fix + #209, #3967
+  static tela_final_fix + #210, #3967
+  static tela_final_fix + #211, #3967
+  static tela_final_fix + #212, #3967
+  static tela_final_fix + #213, #3967
+  static tela_final_fix + #214, #3967
+  static tela_final_fix + #215, #3967
+  static tela_final_fix + #216, #3967
+  static tela_final_fix + #217, #3967
+  static tela_final_fix + #218, #3967
+  static tela_final_fix + #219, #3967
+  static tela_final_fix + #220, #3967
+  static tela_final_fix + #221, #3967
+  static tela_final_fix + #222, #3967
+  static tela_final_fix + #223, #3967
+  static tela_final_fix + #224, #3967
+  static tela_final_fix + #225, #3967
+  static tela_final_fix + #226, #3967
+  static tela_final_fix + #227, #3967
+  static tela_final_fix + #228, #3967
+  static tela_final_fix + #229, #3967
+  static tela_final_fix + #230, #3967
+  static tela_final_fix + #231, #3967
+  static tela_final_fix + #232, #3967
+  static tela_final_fix + #233, #3967
+  static tela_final_fix + #234, #3967
+  static tela_final_fix + #235, #3967
+  static tela_final_fix + #236, #3967
+  static tela_final_fix + #237, #3967
+  static tela_final_fix + #238, #3967
+  static tela_final_fix + #239, #2880
+
+  ;Linha 6
+  static tela_final_fix + #240, #2880
+  static tela_final_fix + #241, #3967
+  static tela_final_fix + #242, #3967
+  static tela_final_fix + #243, #64
+  static tela_final_fix + #244, #64
+  static tela_final_fix + #245, #64
+  static tela_final_fix + #246, #64
+  static tela_final_fix + #247, #64
+  static tela_final_fix + #248, #64
+  static tela_final_fix + #249, #64
+  static tela_final_fix + #250, #64
+  static tela_final_fix + #251, #64
+  static tela_final_fix + #252, #64
+  static tela_final_fix + #253, #64
+  static tela_final_fix + #254, #64
+  static tela_final_fix + #255, #64
+  static tela_final_fix + #256, #64
+  static tela_final_fix + #257, #64
+  static tela_final_fix + #258, #64
+  static tela_final_fix + #259, #64
+  static tela_final_fix + #260, #64
+  static tela_final_fix + #261, #64
+  static tela_final_fix + #262, #64
+  static tela_final_fix + #263, #64
+  static tela_final_fix + #264, #64
+  static tela_final_fix + #265, #64
+  static tela_final_fix + #266, #64
+  static tela_final_fix + #267, #64
+  static tela_final_fix + #268, #64
+  static tela_final_fix + #269, #64
+  static tela_final_fix + #270, #64
+  static tela_final_fix + #271, #64
+  static tela_final_fix + #272, #64
+  static tela_final_fix + #273, #64
+  static tela_final_fix + #274, #64
+  static tela_final_fix + #275, #64
+  static tela_final_fix + #276, #64
+  static tela_final_fix + #277, #3967
+  static tela_final_fix + #278, #3967
+  static tela_final_fix + #279, #2880
+
+  ;Linha 7
+  static tela_final_fix + #280, #2880
+  static tela_final_fix + #281, #3967
+  static tela_final_fix + #282, #3967
+  static tela_final_fix + #283, #64
+  static tela_final_fix + #284, #3967
+  static tela_final_fix + #285, #3967
+  static tela_final_fix + #286, #3967
+  static tela_final_fix + #287, #3967
+  static tela_final_fix + #288, #3967
+  static tela_final_fix + #289, #3967
+  static tela_final_fix + #290, #3967
+  static tela_final_fix + #291, #3967
+  static tela_final_fix + #292, #3967
+  static tela_final_fix + #293, #3967
+  static tela_final_fix + #294, #3967
+  static tela_final_fix + #295, #3967
+  static tela_final_fix + #296, #3967
+  static tela_final_fix + #297, #3967
+  static tela_final_fix + #298, #3967
+  static tela_final_fix + #299, #3967
+  static tela_final_fix + #300, #3967
+  static tela_final_fix + #301, #3967
+  static tela_final_fix + #302, #3967
+  static tela_final_fix + #303, #3967
+  static tela_final_fix + #304, #3967
+  static tela_final_fix + #305, #3967
+  static tela_final_fix + #306, #3967
+  static tela_final_fix + #307, #3967
+  static tela_final_fix + #308, #3967
+  static tela_final_fix + #309, #3967
+  static tela_final_fix + #310, #3967
+  static tela_final_fix + #311, #3967
+  static tela_final_fix + #312, #3967
+  static tela_final_fix + #313, #3967
+  static tela_final_fix + #314, #3967
+  static tela_final_fix + #315, #3967
+  static tela_final_fix + #316, #64
+  static tela_final_fix + #317, #3967
+  static tela_final_fix + #318, #3967
+  static tela_final_fix + #319, #2880
+
+  ;Linha 8
+  static tela_final_fix + #320, #2880
+  static tela_final_fix + #321, #3967
+  static tela_final_fix + #322, #3967
+  static tela_final_fix + #323, #64
+  static tela_final_fix + #324, #3967
+  static tela_final_fix + #325, #3967
+  static tela_final_fix + #326, #3967
+  static tela_final_fix + #327, #3967
+  static tela_final_fix + #328, #3967
+  static tela_final_fix + #329, #3967
+  static tela_final_fix + #330, #3967
+  static tela_final_fix + #331, #3967
+  static tela_final_fix + #332, #3967
+  static tela_final_fix + #333, #3967
+  static tela_final_fix + #334, #3967
+  static tela_final_fix + #335, #3967
+  static tela_final_fix + #336, #3967
+  static tela_final_fix + #337, #3967
+  static tela_final_fix + #338, #3967
+  static tela_final_fix + #339, #3967
+  static tela_final_fix + #340, #3967
+  static tela_final_fix + #341, #3967
+  static tela_final_fix + #342, #3967
+  static tela_final_fix + #343, #3967
+  static tela_final_fix + #344, #3967
+  static tela_final_fix + #345, #3967
+  static tela_final_fix + #346, #3967
+  static tela_final_fix + #347, #3967
+  static tela_final_fix + #348, #3967
+  static tela_final_fix + #349, #3967
+  static tela_final_fix + #350, #3967
+  static tela_final_fix + #351, #3967
+  static tela_final_fix + #352, #3967
+  static tela_final_fix + #353, #3967
+  static tela_final_fix + #354, #3967
+  static tela_final_fix + #355, #3967
+  static tela_final_fix + #356, #64
+  static tela_final_fix + #357, #3967
+  static tela_final_fix + #358, #3967
+  static tela_final_fix + #359, #2880
+
+  ;Linha 9
+  static tela_final_fix + #360, #2880
+  static tela_final_fix + #361, #3967
+  static tela_final_fix + #362, #3967
+  static tela_final_fix + #363, #64
+  static tela_final_fix + #364, #3967
+  static tela_final_fix + #365, #3967
+  static tela_final_fix + #366, #3967
+  static tela_final_fix + #367, #3967
+  static tela_final_fix + #368, #3967
+  static tela_final_fix + #369, #3967
+  static tela_final_fix + #370, #3967
+  static tela_final_fix + #371, #3967
+  static tela_final_fix + #372, #3967
+  static tela_final_fix + #373, #3967
+  static tela_final_fix + #374, #3967
+  static tela_final_fix + #375, #3967
+  static tela_final_fix + #376, #3967
+  static tela_final_fix + #377, #3967
+  static tela_final_fix + #378, #3967
+  static tela_final_fix + #379, #3967
+  static tela_final_fix + #380, #3967
+  static tela_final_fix + #381, #3967
+  static tela_final_fix + #382, #3967
+  static tela_final_fix + #383, #3967
+  static tela_final_fix + #384, #3967
+  static tela_final_fix + #385, #3967
+  static tela_final_fix + #386, #3967
+  static tela_final_fix + #387, #3967
+  static tela_final_fix + #388, #3967
+  static tela_final_fix + #389, #3967
+  static tela_final_fix + #390, #3967
+  static tela_final_fix + #391, #3967
+  static tela_final_fix + #392, #3967
+  static tela_final_fix + #393, #3967
+  static tela_final_fix + #394, #3967
+  static tela_final_fix + #395, #3967
+  static tela_final_fix + #396, #64
+  static tela_final_fix + #397, #3967
+  static tela_final_fix + #398, #3967
+  static tela_final_fix + #399, #2880
+
+  ;Linha 10
+  static tela_final_fix + #400, #2880
+  static tela_final_fix + #401, #3967
+  static tela_final_fix + #402, #3967
+  static tela_final_fix + #403, #64
+  static tela_final_fix + #404, #3967
+  static tela_final_fix + #405, #3967
+  static tela_final_fix + #406, #86
+  static tela_final_fix + #407, #79
+  static tela_final_fix + #408, #67
+  static tela_final_fix + #409, #69
+  static tela_final_fix + #410, #3967
+  static tela_final_fix + #411, #80
+  static tela_final_fix + #412, #69
+  static tela_final_fix + #413, #82
+  static tela_final_fix + #414, #68
+  static tela_final_fix + #415, #69
+  static tela_final_fix + #416, #85
+  static tela_final_fix + #417, #44
+  static tela_final_fix + #418, #3967
+  static tela_final_fix + #419, #77
+  static tela_final_fix + #420, #65
+  static tela_final_fix + #421, #83
+  static tela_final_fix + #422, #3967
+  static tela_final_fix + #423, #70
+  static tela_final_fix + #424, #73
+  static tela_final_fix + #425, #81
+  static tela_final_fix + #426, #85
+  static tela_final_fix + #427, #69
+  static tela_final_fix + #428, #3967
+  static tela_final_fix + #429, #83
+  static tela_final_fix + #430, #85
+  static tela_final_fix + #431, #65
+  static tela_final_fix + #432, #86
+  static tela_final_fix + #433, #69
+  static tela_final_fix + #434, #3967
+  static tela_final_fix + #435, #3967
+  static tela_final_fix + #436, #64
+  static tela_final_fix + #437, #3967
+  static tela_final_fix + #438, #3967
+  static tela_final_fix + #439, #2880
+
+  ;Linha 11
+  static tela_final_fix + #440, #2880
+  static tela_final_fix + #441, #3967
+  static tela_final_fix + #442, #3967
+  static tela_final_fix + #443, #64
+  static tela_final_fix + #444, #3967
+  static tela_final_fix + #445, #3967
+  static tela_final_fix + #446, #3967
+  static tela_final_fix + #447, #3967
+  static tela_final_fix + #448, #3967
+  static tela_final_fix + #449, #3967
+  static tela_final_fix + #450, #3967
+  static tela_final_fix + #451, #3967
+  static tela_final_fix + #452, #3967
+  static tela_final_fix + #453, #3967
+  static tela_final_fix + #454, #3967
+  static tela_final_fix + #455, #3967
+  static tela_final_fix + #456, #3967
+  static tela_final_fix + #457, #3967
+  static tela_final_fix + #458, #3967
+  static tela_final_fix + #459, #3967
+  static tela_final_fix + #460, #3967
+  static tela_final_fix + #461, #3967
+  static tela_final_fix + #462, #3967
+  static tela_final_fix + #463, #3967
+  static tela_final_fix + #464, #3967
+  static tela_final_fix + #465, #3967
+  static tela_final_fix + #466, #3967
+  static tela_final_fix + #467, #3967
+  static tela_final_fix + #468, #3967
+  static tela_final_fix + #469, #3967
+  static tela_final_fix + #470, #3967
+  static tela_final_fix + #471, #3967
+  static tela_final_fix + #472, #3967
+  static tela_final_fix + #473, #3967
+  static tela_final_fix + #474, #3967
+  static tela_final_fix + #475, #3967
+  static tela_final_fix + #476, #64
+  static tela_final_fix + #477, #3967
+  static tela_final_fix + #478, #3967
+  static tela_final_fix + #479, #2880
+
+  ;Linha 12
+  static tela_final_fix + #480, #2880
+  static tela_final_fix + #481, #3967
+  static tela_final_fix + #482, #3967
+  static tela_final_fix + #483, #64
+  static tela_final_fix + #484, #3967
+  static tela_final_fix + #485, #3967
+  static tela_final_fix + #486, #65
+  static tela_final_fix + #487, #79
+  static tela_final_fix + #488, #3967
+  static tela_final_fix + #489, #77
+  static tela_final_fix + #490, #69
+  static tela_final_fix + #491, #78
+  static tela_final_fix + #492, #79
+  static tela_final_fix + #493, #83
+  static tela_final_fix + #494, #3967
+  static tela_final_fix + #495, #86
+  static tela_final_fix + #496, #79
+  static tela_final_fix + #497, #67
+  static tela_final_fix + #498, #69
+  static tela_final_fix + #499, #3967
+  static tela_final_fix + #500, #78
+  static tela_final_fix + #501, #65
+  static tela_final_fix + #502, #79
+  static tela_final_fix + #503, #3967
+  static tela_final_fix + #504, #69
+  static tela_final_fix + #505, #3967
+  static tela_final_fix + #506, #2374
+  static tela_final_fix + #507, #2373
+  static tela_final_fix + #508, #2372
+  static tela_final_fix + #509, #2373
+  static tela_final_fix + #510, #2386
+  static tela_final_fix + #511, #2389
+  static tela_final_fix + #512, #2384
+  static tela_final_fix + #513, #2369
+  static tela_final_fix + #514, #3967
+  static tela_final_fix + #515, #3967
+  static tela_final_fix + #516, #64
+  static tela_final_fix + #517, #3967
+  static tela_final_fix + #518, #3967
+  static tela_final_fix + #519, #2880
+
+  ;Linha 13
+  static tela_final_fix + #520, #2880
+  static tela_final_fix + #521, #3967
+  static tela_final_fix + #522, #3967
+  static tela_final_fix + #523, #64
+  static tela_final_fix + #524, #3967
+  static tela_final_fix + #525, #3967
+  static tela_final_fix + #526, #3967
+  static tela_final_fix + #527, #3967
+  static tela_final_fix + #528, #3967
+  static tela_final_fix + #529, #3967
+  static tela_final_fix + #530, #3967
+  static tela_final_fix + #531, #3967
+  static tela_final_fix + #532, #3967
+  static tela_final_fix + #533, #3967
+  static tela_final_fix + #534, #3967
+  static tela_final_fix + #535, #3967
+  static tela_final_fix + #536, #3967
+  static tela_final_fix + #537, #3967
+  static tela_final_fix + #538, #3967
+  static tela_final_fix + #539, #3967
+  static tela_final_fix + #540, #3967
+  static tela_final_fix + #541, #3967
+  static tela_final_fix + #542, #3967
+  static tela_final_fix + #543, #3967
+  static tela_final_fix + #544, #3967
+  static tela_final_fix + #545, #3967
+  static tela_final_fix + #546, #3967
+  static tela_final_fix + #547, #3967
+  static tela_final_fix + #548, #3967
+  static tela_final_fix + #549, #3967
+  static tela_final_fix + #550, #3967
+  static tela_final_fix + #551, #3967
+  static tela_final_fix + #552, #3967
+  static tela_final_fix + #553, #3967
+  static tela_final_fix + #554, #3967
+  static tela_final_fix + #555, #3967
+  static tela_final_fix + #556, #64
+  static tela_final_fix + #557, #3967
+  static tela_final_fix + #558, #3967
+  static tela_final_fix + #559, #2880
+
+  ;Linha 14
+  static tela_final_fix + #560, #2880
+  static tela_final_fix + #561, #3967
+  static tela_final_fix + #562, #3967
+  static tela_final_fix + #563, #64
+  static tela_final_fix + #564, #3967
+  static tela_final_fix + #565, #3967
+  static tela_final_fix + #566, #3967
+  static tela_final_fix + #567, #3967
+  static tela_final_fix + #568, #3967
+  static tela_final_fix + #569, #3967
+  static tela_final_fix + #570, #3967
+  static tela_final_fix + #571, #3967
+  static tela_final_fix + #572, #3967
+  static tela_final_fix + #573, #3967
+  static tela_final_fix + #574, #3967
+  static tela_final_fix + #575, #3967
+  static tela_final_fix + #576, #3967
+  static tela_final_fix + #577, #3967
+  static tela_final_fix + #578, #3967
+  static tela_final_fix + #579, #3967
+  static tela_final_fix + #580, #3967
+  static tela_final_fix + #581, #3967
+  static tela_final_fix + #582, #3967
+  static tela_final_fix + #583, #3967
+  static tela_final_fix + #584, #3967
+  static tela_final_fix + #585, #3967
+  static tela_final_fix + #586, #3967
+  static tela_final_fix + #587, #3967
+  static tela_final_fix + #588, #3967
+  static tela_final_fix + #589, #3967
+  static tela_final_fix + #590, #3967
+  static tela_final_fix + #591, #3967
+  static tela_final_fix + #592, #3967
+  static tela_final_fix + #593, #3967
+  static tela_final_fix + #594, #3967
+  static tela_final_fix + #595, #3967
+  static tela_final_fix + #596, #64
+  static tela_final_fix + #597, #3967
+  static tela_final_fix + #598, #3967
+  static tela_final_fix + #599, #2880
+
+  ;Linha 15
+  static tela_final_fix + #600, #2880
+  static tela_final_fix + #601, #3967
+  static tela_final_fix + #602, #3967
+  static tela_final_fix + #603, #64
+  static tela_final_fix + #604, #3967
+  static tela_final_fix + #605, #3967
+  static tela_final_fix + #606, #3967
+  static tela_final_fix + #607, #3967
+  static tela_final_fix + #608, #3967
+  static tela_final_fix + #609, #3967
+  static tela_final_fix + #610, #3967
+  static tela_final_fix + #611, #3967
+  static tela_final_fix + #612, #3967
+  static tela_final_fix + #613, #3967
+  static tela_final_fix + #614, #3967
+  static tela_final_fix + #615, #3967
+  static tela_final_fix + #616, #3967
+  static tela_final_fix + #617, #3967
+  static tela_final_fix + #618, #3967
+  static tela_final_fix + #619, #3967
+  static tela_final_fix + #620, #3967
+  static tela_final_fix + #621, #3967
+  static tela_final_fix + #622, #3967
+  static tela_final_fix + #623, #3967
+  static tela_final_fix + #624, #3967
+  static tela_final_fix + #625, #3967
+  static tela_final_fix + #626, #3967
+  static tela_final_fix + #627, #3967
+  static tela_final_fix + #628, #3967
+  static tela_final_fix + #629, #3967
+  static tela_final_fix + #630, #3967
+  static tela_final_fix + #631, #3967
+  static tela_final_fix + #632, #3967
+  static tela_final_fix + #633, #3967
+  static tela_final_fix + #634, #3967
+  static tela_final_fix + #635, #3967
+  static tela_final_fix + #636, #64
+  static tela_final_fix + #637, #3967
+  static tela_final_fix + #638, #3967
+  static tela_final_fix + #639, #2880
+
+  ;Linha 16
+  static tela_final_fix + #640, #2880
+  static tela_final_fix + #641, #3967
+  static tela_final_fix + #642, #3967
+  static tela_final_fix + #643, #64
+  static tela_final_fix + #644, #3967
+  static tela_final_fix + #645, #3967
+  static tela_final_fix + #646, #3967
+  static tela_final_fix + #647, #3967
+  static tela_final_fix + #648, #3967
+  static tela_final_fix + #649, #3967
+  static tela_final_fix + #650, #3967
+  static tela_final_fix + #651, #3967
+  static tela_final_fix + #652, #3967
+  static tela_final_fix + #653, #3967
+  static tela_final_fix + #654, #3967
+  static tela_final_fix + #655, #3967
+  static tela_final_fix + #656, #3967
+  static tela_final_fix + #657, #3967
+  static tela_final_fix + #658, #3967
+  static tela_final_fix + #659, #3967
+  static tela_final_fix + #660, #3967
+  static tela_final_fix + #661, #3967
+  static tela_final_fix + #662, #3967
+  static tela_final_fix + #663, #3967
+  static tela_final_fix + #664, #3967
+  static tela_final_fix + #665, #3967
+  static tela_final_fix + #666, #3967
+  static tela_final_fix + #667, #3967
+  static tela_final_fix + #668, #3967
+  static tela_final_fix + #669, #3967
+  static tela_final_fix + #670, #3967
+  static tela_final_fix + #671, #3967
+  static tela_final_fix + #672, #3967
+  static tela_final_fix + #673, #3967
+  static tela_final_fix + #674, #3967
+  static tela_final_fix + #675, #3967
+  static tela_final_fix + #676, #64
+  static tela_final_fix + #677, #3967
+  static tela_final_fix + #678, #3967
+  static tela_final_fix + #679, #2880
+
+  ;Linha 17
+  static tela_final_fix + #680, #2880
+  static tela_final_fix + #681, #3967
+  static tela_final_fix + #682, #3967
+  static tela_final_fix + #683, #64
+  static tela_final_fix + #684, #3967
+  static tela_final_fix + #685, #3967
+  static tela_final_fix + #686, #65
+  static tela_final_fix + #687, #80
+  static tela_final_fix + #688, #69
+  static tela_final_fix + #689, #82
+  static tela_final_fix + #690, #84
+  static tela_final_fix + #691, #69
+  static tela_final_fix + #692, #3967
+  static tela_final_fix + #693, #2885
+  static tela_final_fix + #694, #2899
+  static tela_final_fix + #695, #2896
+  static tela_final_fix + #696, #2881
+  static tela_final_fix + #697, #2883
+  static tela_final_fix + #698, #2895
+  static tela_final_fix + #699, #3967
+  static tela_final_fix + #700, #80
+  static tela_final_fix + #701, #65
+  static tela_final_fix + #702, #82
+  static tela_final_fix + #703, #65
+  static tela_final_fix + #704, #3967
+  static tela_final_fix + #705, #82
+  static tela_final_fix + #706, #69
+  static tela_final_fix + #707, #67
+  static tela_final_fix + #708, #79
+  static tela_final_fix + #709, #77
+  static tela_final_fix + #710, #69
+  static tela_final_fix + #711, #67
+  static tela_final_fix + #712, #65
+  static tela_final_fix + #713, #82
+  static tela_final_fix + #714, #3967
+  static tela_final_fix + #715, #3967
+  static tela_final_fix + #716, #64
+  static tela_final_fix + #717, #3967
+  static tela_final_fix + #718, #3967
+  static tela_final_fix + #719, #2880
+
+  ;Linha 18
+  static tela_final_fix + #720, #2880
+  static tela_final_fix + #721, #3967
+  static tela_final_fix + #722, #3967
+  static tela_final_fix + #723, #64
+  static tela_final_fix + #724, #3967
+  static tela_final_fix + #725, #3967
+  static tela_final_fix + #726, #3967
+  static tela_final_fix + #727, #3967
+  static tela_final_fix + #728, #3967
+  static tela_final_fix + #729, #3967
+  static tela_final_fix + #730, #3967
+  static tela_final_fix + #731, #3967
+  static tela_final_fix + #732, #3967
+  static tela_final_fix + #733, #3967
+  static tela_final_fix + #734, #3967
+  static tela_final_fix + #735, #3967
+  static tela_final_fix + #736, #3967
+  static tela_final_fix + #737, #3967
+  static tela_final_fix + #738, #3967
+  static tela_final_fix + #739, #3967
+  static tela_final_fix + #740, #3967
+  static tela_final_fix + #741, #3967
+  static tela_final_fix + #742, #3967
+  static tela_final_fix + #743, #3967
+  static tela_final_fix + #744, #3967
+  static tela_final_fix + #745, #3967
+  static tela_final_fix + #746, #3967
+  static tela_final_fix + #747, #3967
+  static tela_final_fix + #748, #3967
+  static tela_final_fix + #749, #3967
+  static tela_final_fix + #750, #3967
+  static tela_final_fix + #751, #3967
+  static tela_final_fix + #752, #3967
+  static tela_final_fix + #753, #3967
+  static tela_final_fix + #754, #3967
+  static tela_final_fix + #755, #3967
+  static tela_final_fix + #756, #64
+  static tela_final_fix + #757, #3967
+  static tela_final_fix + #758, #3967
+  static tela_final_fix + #759, #2880
+
+  ;Linha 19
+  static tela_final_fix + #760, #2880
+  static tela_final_fix + #761, #3967
+  static tela_final_fix + #762, #3967
+  static tela_final_fix + #763, #64
+  static tela_final_fix + #764, #3967
+  static tela_final_fix + #765, #3967
+  static tela_final_fix + #766, #3967
+  static tela_final_fix + #767, #3967
+  static tela_final_fix + #768, #3967
+  static tela_final_fix + #769, #3967
+  static tela_final_fix + #770, #3967
+  static tela_final_fix + #771, #3967
+  static tela_final_fix + #772, #3967
+  static tela_final_fix + #773, #3967
+  static tela_final_fix + #774, #3967
+  static tela_final_fix + #775, #3967
+  static tela_final_fix + #776, #3967
+  static tela_final_fix + #777, #3967
+  static tela_final_fix + #778, #3967
+  static tela_final_fix + #779, #3967
+  static tela_final_fix + #780, #3967
+  static tela_final_fix + #781, #3967
+  static tela_final_fix + #782, #3967
+  static tela_final_fix + #783, #3967
+  static tela_final_fix + #784, #3967
+  static tela_final_fix + #785, #3967
+  static tela_final_fix + #786, #3967
+  static tela_final_fix + #787, #3967
+  static tela_final_fix + #788, #3967
+  static tela_final_fix + #789, #3967
+  static tela_final_fix + #790, #3967
+  static tela_final_fix + #791, #3967
+  static tela_final_fix + #792, #3967
+  static tela_final_fix + #793, #3967
+  static tela_final_fix + #794, #3967
+  static tela_final_fix + #795, #3967
+  static tela_final_fix + #796, #64
+  static tela_final_fix + #797, #3967
+  static tela_final_fix + #798, #3967
+  static tela_final_fix + #799, #2880
+
+  ;Linha 20
+  static tela_final_fix + #800, #2880
+  static tela_final_fix + #801, #3967
+  static tela_final_fix + #802, #3967
+  static tela_final_fix + #803, #64
+  static tela_final_fix + #804, #3967
+  static tela_final_fix + #805, #3967
+  static tela_final_fix + #806, #3967
+  static tela_final_fix + #807, #3967
+  static tela_final_fix + #808, #3967
+  static tela_final_fix + #809, #3967
+  static tela_final_fix + #810, #3967
+  static tela_final_fix + #811, #3967
+  static tela_final_fix + #812, #3967
+  static tela_final_fix + #813, #3967
+  static tela_final_fix + #814, #3967
+  static tela_final_fix + #815, #3967
+  static tela_final_fix + #816, #3967
+  static tela_final_fix + #817, #3967
+  static tela_final_fix + #818, #3967
+  static tela_final_fix + #819, #3967
+  static tela_final_fix + #820, #3967
+  static tela_final_fix + #821, #3967
+  static tela_final_fix + #822, #3967
+  static tela_final_fix + #823, #3967
+  static tela_final_fix + #824, #3967
+  static tela_final_fix + #825, #3967
+  static tela_final_fix + #826, #3967
+  static tela_final_fix + #827, #3967
+  static tela_final_fix + #828, #3967
+  static tela_final_fix + #829, #3967
+  static tela_final_fix + #830, #3967
+  static tela_final_fix + #831, #3967
+  static tela_final_fix + #832, #3967
+  static tela_final_fix + #833, #3967
+  static tela_final_fix + #834, #3967
+  static tela_final_fix + #835, #3967
+  static tela_final_fix + #836, #64
+  static tela_final_fix + #837, #3967
+  static tela_final_fix + #838, #3967
+  static tela_final_fix + #839, #2880
+
+  ;Linha 21
+  static tela_final_fix + #840, #2880
+  static tela_final_fix + #841, #3967
+  static tela_final_fix + #842, #3967
+  static tela_final_fix + #843, #64
+  static tela_final_fix + #844, #3967
+  static tela_final_fix + #845, #3967
+  static tela_final_fix + #846, #3967
+  static tela_final_fix + #847, #3967
+  static tela_final_fix + #848, #3967
+  static tela_final_fix + #849, #3967
+  static tela_final_fix + #850, #3967
+  static tela_final_fix + #851, #3967
+  static tela_final_fix + #852, #3967
+  static tela_final_fix + #853, #3967
+  static tela_final_fix + #854, #3967
+  static tela_final_fix + #855, #3967
+  static tela_final_fix + #856, #3967
+  static tela_final_fix + #857, #3967
+  static tela_final_fix + #858, #3967
+  static tela_final_fix + #859, #3967
+  static tela_final_fix + #860, #3967
+  static tela_final_fix + #861, #3967
+  static tela_final_fix + #862, #3967
+  static tela_final_fix + #863, #3967
+  static tela_final_fix + #864, #3967
+  static tela_final_fix + #865, #3967
+  static tela_final_fix + #866, #3967
+  static tela_final_fix + #867, #3967
+  static tela_final_fix + #868, #3967
+  static tela_final_fix + #869, #3967
+  static tela_final_fix + #870, #3967
+  static tela_final_fix + #871, #3967
+  static tela_final_fix + #872, #3967
+  static tela_final_fix + #873, #3967
+  static tela_final_fix + #874, #3967
+  static tela_final_fix + #875, #3967
+  static tela_final_fix + #876, #64
+  static tela_final_fix + #877, #3967
+  static tela_final_fix + #878, #3967
+  static tela_final_fix + #879, #2880
+
+  ;Linha 22
+  static tela_final_fix + #880, #2880
+  static tela_final_fix + #881, #3967
+  static tela_final_fix + #882, #3967
+  static tela_final_fix + #883, #64
+  static tela_final_fix + #884, #3967
+  static tela_final_fix + #885, #3967
+  static tela_final_fix + #886, #3967
+  static tela_final_fix + #887, #3967
+  static tela_final_fix + #888, #3967
+  static tela_final_fix + #889, #3967
+  static tela_final_fix + #890, #3967
+  static tela_final_fix + #891, #3967
+  static tela_final_fix + #892, #3967
+  static tela_final_fix + #893, #3967
+  static tela_final_fix + #894, #3967
+  static tela_final_fix + #895, #3967
+  static tela_final_fix + #896, #3967
+  static tela_final_fix + #897, #3967
+  static tela_final_fix + #898, #3967
+  static tela_final_fix + #899, #3967
+  static tela_final_fix + #900, #3967
+  static tela_final_fix + #901, #3967
+  static tela_final_fix + #902, #3967
+  static tela_final_fix + #903, #3967
+  static tela_final_fix + #904, #3967
+  static tela_final_fix + #905, #3967
+  static tela_final_fix + #906, #3967
+  static tela_final_fix + #907, #3967
+  static tela_final_fix + #908, #3967
+  static tela_final_fix + #909, #3967
+  static tela_final_fix + #910, #3967
+  static tela_final_fix + #911, #3967
+  static tela_final_fix + #912, #3967
+  static tela_final_fix + #913, #3967
+  static tela_final_fix + #914, #3967
+  static tela_final_fix + #915, #3967
+  static tela_final_fix + #916, #64
+  static tela_final_fix + #917, #3967
+  static tela_final_fix + #918, #3967
+  static tela_final_fix + #919, #2880
+
+  ;Linha 23
+  static tela_final_fix + #920, #2880
+  static tela_final_fix + #921, #3967
+  static tela_final_fix + #922, #3967
+  static tela_final_fix + #923, #64
+  static tela_final_fix + #924, #64
+  static tela_final_fix + #925, #64
+  static tela_final_fix + #926, #64
+  static tela_final_fix + #927, #64
+  static tela_final_fix + #928, #64
+  static tela_final_fix + #929, #64
+  static tela_final_fix + #930, #64
+  static tela_final_fix + #931, #64
+  static tela_final_fix + #932, #64
+  static tela_final_fix + #933, #64
+  static tela_final_fix + #934, #64
+  static tela_final_fix + #935, #64
+  static tela_final_fix + #936, #64
+  static tela_final_fix + #937, #64
+  static tela_final_fix + #938, #64
+  static tela_final_fix + #939, #64
+  static tela_final_fix + #940, #64
+  static tela_final_fix + #941, #64
+  static tela_final_fix + #942, #64
+  static tela_final_fix + #943, #64
+  static tela_final_fix + #944, #64
+  static tela_final_fix + #945, #64
+  static tela_final_fix + #946, #64
+  static tela_final_fix + #947, #64
+  static tela_final_fix + #948, #64
+  static tela_final_fix + #949, #64
+  static tela_final_fix + #950, #64
+  static tela_final_fix + #951, #64
+  static tela_final_fix + #952, #64
+  static tela_final_fix + #953, #64
+  static tela_final_fix + #954, #64
+  static tela_final_fix + #955, #64
+  static tela_final_fix + #956, #64
+  static tela_final_fix + #957, #3967
+  static tela_final_fix + #958, #3967
+  static tela_final_fix + #959, #2880
+
+  ;Linha 24
+  static tela_final_fix + #960, #2880
+  static tela_final_fix + #961, #3967
+  static tela_final_fix + #962, #3967
+  static tela_final_fix + #963, #3967
+  static tela_final_fix + #964, #3967
+  static tela_final_fix + #965, #3967
+  static tela_final_fix + #966, #3967
+  static tela_final_fix + #967, #3967
+  static tela_final_fix + #968, #3967
+  static tela_final_fix + #969, #3967
+  static tela_final_fix + #970, #3967
+  static tela_final_fix + #971, #3967
+  static tela_final_fix + #972, #3967
+  static tela_final_fix + #973, #3967
+  static tela_final_fix + #974, #3967
+  static tela_final_fix + #975, #3967
+  static tela_final_fix + #976, #3967
+  static tela_final_fix + #977, #3967
+  static tela_final_fix + #978, #3967
+  static tela_final_fix + #979, #3967
+  static tela_final_fix + #980, #3967
+  static tela_final_fix + #981, #3967
+  static tela_final_fix + #982, #3967
+  static tela_final_fix + #983, #3967
+  static tela_final_fix + #984, #3967
+  static tela_final_fix + #985, #3967
+  static tela_final_fix + #986, #3967
+  static tela_final_fix + #987, #3967
+  static tela_final_fix + #988, #3967
+  static tela_final_fix + #989, #3967
+  static tela_final_fix + #990, #3967
+  static tela_final_fix + #991, #3967
+  static tela_final_fix + #992, #3967
+  static tela_final_fix + #993, #3967
+  static tela_final_fix + #994, #3967
+  static tela_final_fix + #995, #3967
+  static tela_final_fix + #996, #3967
+  static tela_final_fix + #997, #3967
+  static tela_final_fix + #998, #3967
+  static tela_final_fix + #999, #2880
+
+  ;Linha 25
+  static tela_final_fix + #1000, #2880
+  static tela_final_fix + #1001, #3967
+  static tela_final_fix + #1002, #3967
+  static tela_final_fix + #1003, #3967
+  static tela_final_fix + #1004, #3967
+  static tela_final_fix + #1005, #3967
+  static tela_final_fix + #1006, #3967
+  static tela_final_fix + #1007, #3967
+  static tela_final_fix + #1008, #3967
+  static tela_final_fix + #1009, #3967
+  static tela_final_fix + #1010, #3967
+  static tela_final_fix + #1011, #3967
+  static tela_final_fix + #1012, #3967
+  static tela_final_fix + #1013, #3967
+  static tela_final_fix + #1014, #3967
+  static tela_final_fix + #1015, #3967
+  static tela_final_fix + #1016, #3967
+  static tela_final_fix + #1017, #3967
+  static tela_final_fix + #1018, #3967
+  static tela_final_fix + #1019, #3967
+  static tela_final_fix + #1020, #3967
+  static tela_final_fix + #1021, #3967
+  static tela_final_fix + #1022, #3967
+  static tela_final_fix + #1023, #3967
+  static tela_final_fix + #1024, #3967
+  static tela_final_fix + #1025, #3967
+  static tela_final_fix + #1026, #3967
+  static tela_final_fix + #1027, #3967
+  static tela_final_fix + #1028, #3967
+  static tela_final_fix + #1029, #3967
+  static tela_final_fix + #1030, #3967
+  static tela_final_fix + #1031, #3967
+  static tela_final_fix + #1032, #3967
+  static tela_final_fix + #1033, #3967
+  static tela_final_fix + #1034, #3967
+  static tela_final_fix + #1035, #3967
+  static tela_final_fix + #1036, #3967
+  static tela_final_fix + #1037, #3967
+  static tela_final_fix + #1038, #3967
+  static tela_final_fix + #1039, #2880
+
+  ;Linha 26
+  static tela_final_fix + #1040, #2880
+  static tela_final_fix + #1041, #3967
+  static tela_final_fix + #1042, #3967
+  static tela_final_fix + #1043, #3967
+  static tela_final_fix + #1044, #3967
+  static tela_final_fix + #1045, #3967
+  static tela_final_fix + #1046, #3967
+  static tela_final_fix + #1047, #3967
+  static tela_final_fix + #1048, #3967
+  static tela_final_fix + #1049, #3967
+  static tela_final_fix + #1050, #3967
+  static tela_final_fix + #1051, #3967
+  static tela_final_fix + #1052, #3967
+  static tela_final_fix + #1053, #3967
+  static tela_final_fix + #1054, #3967
+  static tela_final_fix + #1055, #3967
+  static tela_final_fix + #1056, #3967
+  static tela_final_fix + #1057, #3967
+  static tela_final_fix + #1058, #3967
+  static tela_final_fix + #1059, #3967
+  static tela_final_fix + #1060, #3967
+  static tela_final_fix + #1061, #3967
+  static tela_final_fix + #1062, #3967
+  static tela_final_fix + #1063, #3967
+  static tela_final_fix + #1064, #3967
+  static tela_final_fix + #1065, #3967
+  static tela_final_fix + #1066, #3967
+  static tela_final_fix + #1067, #3967
+  static tela_final_fix + #1068, #3967
+  static tela_final_fix + #1069, #3967
+  static tela_final_fix + #1070, #3967
+  static tela_final_fix + #1071, #3967
+  static tela_final_fix + #1072, #3967
+  static tela_final_fix + #1073, #3967
+  static tela_final_fix + #1074, #3967
+  static tela_final_fix + #1075, #3967
+  static tela_final_fix + #1076, #3967
+  static tela_final_fix + #1077, #3967
+  static tela_final_fix + #1078, #3967
+  static tela_final_fix + #1079, #2880
+
+  ;Linha 27
+  static tela_final_fix + #1080, #2880
+  static tela_final_fix + #1081, #3967
+  static tela_final_fix + #1082, #3967
+  static tela_final_fix + #1083, #3967
+  static tela_final_fix + #1084, #3967
+  static tela_final_fix + #1085, #3967
+  static tela_final_fix + #1086, #3967
+  static tela_final_fix + #1087, #3967
+  static tela_final_fix + #1088, #3967
+  static tela_final_fix + #1089, #3967
+  static tela_final_fix + #1090, #3967
+  static tela_final_fix + #1091, #3967
+  static tela_final_fix + #1092, #3967
+  static tela_final_fix + #1093, #3967
+  static tela_final_fix + #1094, #3967
+  static tela_final_fix + #1095, #3967
+  static tela_final_fix + #1096, #3967
+  static tela_final_fix + #1097, #3967
+  static tela_final_fix + #1098, #3967
+  static tela_final_fix + #1099, #3967
+  static tela_final_fix + #1100, #3967
+  static tela_final_fix + #1101, #3967
+  static tela_final_fix + #1102, #3967
+  static tela_final_fix + #1103, #3967
+  static tela_final_fix + #1104, #3967
+  static tela_final_fix + #1105, #3967
+  static tela_final_fix + #1106, #3967
+  static tela_final_fix + #1107, #3967
+  static tela_final_fix + #1108, #3967
+  static tela_final_fix + #1109, #3967
+  static tela_final_fix + #1110, #3967
+  static tela_final_fix + #1111, #3967
+  static tela_final_fix + #1112, #3967
+  static tela_final_fix + #1113, #3967
+  static tela_final_fix + #1114, #3967
+  static tela_final_fix + #1115, #3967
+  static tela_final_fix + #1116, #3967
+  static tela_final_fix + #1117, #3967
+  static tela_final_fix + #1118, #3967
+  static tela_final_fix + #1119, #2880
+
+  ;Linha 28
+  static tela_final_fix + #1120, #2880
+  static tela_final_fix + #1121, #73
+  static tela_final_fix + #1122, #67
+  static tela_final_fix + #1123, #77
+  static tela_final_fix + #1124, #67
+  static tela_final_fix + #1125, #3967
+  static tela_final_fix + #1126, #3967
+  static tela_final_fix + #1127, #3967
+  static tela_final_fix + #1128, #3967
+  static tela_final_fix + #1129, #3967
+  static tela_final_fix + #1130, #3967
+  static tela_final_fix + #1131, #3967
+  static tela_final_fix + #1132, #3967
+  static tela_final_fix + #1133, #3967
+  static tela_final_fix + #1134, #3967
+  static tela_final_fix + #1135, #3967
+  static tela_final_fix + #1136, #3967
+  static tela_final_fix + #1137, #3967
+  static tela_final_fix + #1138, #3967
+  static tela_final_fix + #1139, #3967
+  static tela_final_fix + #1140, #3967
+  static tela_final_fix + #1141, #3967
+  static tela_final_fix + #1142, #3967
+  static tela_final_fix + #1143, #3967
+  static tela_final_fix + #1144, #3967
+  static tela_final_fix + #1145, #3967
+  static tela_final_fix + #1146, #3967
+  static tela_final_fix + #1147, #3967
+  static tela_final_fix + #1148, #3967
+  static tela_final_fix + #1149, #3967
+  static tela_final_fix + #1150, #3967
+  static tela_final_fix + #1151, #3967
+  static tela_final_fix + #1152, #3967
+  static tela_final_fix + #1153, #3967
+  static tela_final_fix + #1154, #3967
+  static tela_final_fix + #1155, #50
+  static tela_final_fix + #1156, #48
+  static tela_final_fix + #1157, #50
+  static tela_final_fix + #1158, #50
+  static tela_final_fix + #1159, #2880
+
+  ;Linha 29
+  static tela_final_fix + #1160, #2880
+  static tela_final_fix + #1161, #2880
+  static tela_final_fix + #1162, #2880
+  static tela_final_fix + #1163, #2880
+  static tela_final_fix + #1164, #2880
+  static tela_final_fix + #1165, #2880
+  static tela_final_fix + #1166, #2880
+  static tela_final_fix + #1167, #2880
+  static tela_final_fix + #1168, #2880
+  static tela_final_fix + #1169, #2880
+  static tela_final_fix + #1170, #2880
+  static tela_final_fix + #1171, #2880
+  static tela_final_fix + #1172, #2880
+  static tela_final_fix + #1173, #2880
+  static tela_final_fix + #1174, #2880
+  static tela_final_fix + #1175, #2880
+  static tela_final_fix + #1176, #2880
+  static tela_final_fix + #1177, #2880
+  static tela_final_fix + #1178, #2880
+  static tela_final_fix + #1179, #2880
+  static tela_final_fix + #1180, #2880
+  static tela_final_fix + #1181, #2880
+  static tela_final_fix + #1182, #2880
+  static tela_final_fix + #1183, #2880
+  static tela_final_fix + #1184, #2880
+  static tela_final_fix + #1185, #2880
+  static tela_final_fix + #1186, #2880
+  static tela_final_fix + #1187, #2880
+  static tela_final_fix + #1188, #2880
+  static tela_final_fix + #1189, #2880
+  static tela_final_fix + #1190, #2880
+  static tela_final_fix + #1191, #2880
+  static tela_final_fix + #1192, #2880
+  static tela_final_fix + #1193, #2880
+  static tela_final_fix + #1194, #2880
+  static tela_final_fix + #1195, #2880
+  static tela_final_fix + #1196, #2880
+  static tela_final_fix + #1197, #2880
+  static tela_final_fix + #1198, #2880
+  static tela_final_fix + #1199, #2880
+
+printtela_final_fixScreen:
+  push R0
+  push R1
+  push R2
+  push R3
+
+  loadn R0, #tela_final_fix
+  loadn R1, #0
+  loadn R2, #1200
+
+  printtela_final_fixScreenLoop:
+
+    add R3,R0,R1
+    loadi R3, R3
+    outchar R3, R1
+    inc R1
+    cmp R1, R2
+
+    jne printtela_final_fixScreenLoop
+
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
+; TELAS END
+; ================================================ 
+  
+; UTILS BEGIN
+; ================================================ 
 DigitaAlgo:
   push fr ; Protege o registrador de flags
   push r0
@@ -1311,23 +3923,22 @@ DigitaAlgo:
   push r2 
   
   
-  
   loadn r1, #255  ; Se nao digitar nada vem 255
   loadn r2, #0
   
   DigitaAlgo_Loop:
-    inchar r0            ; Le o teclado, se nada for digitado = 255   
-    cmp r0, r1           ;compara r0 com 255
-    jeq DigitaAlgo_Loop    ; Fica lendo ate' que digite uma tecla valida
+  inchar r0            ; Le o teclado, se nada for digitado = 255   
+
+  cmp r0, r1           ;compara r0 com 255
+  jeq DigitaAlgo_Loop    ; Fica lendo ate' que digite uma tecla valida
       
   
   store Letra, r0          ; Salva a tecla na variavel global "Letra"
   
-  
   DigitaAlgo_Loop2:       ; Bloco novo para aguardar que o user solte a tecla pressionada!!
-    inchar r0             ; Le o teclado, se nada for digitado = 255
-    cmp r0, r1            ;compara r0 com 255
-    jne DigitaAlgo_Loop2  ; Fica lendo ate' que digite uma tecla valida
+  inchar r0             ; Le o teclado, se nada for digitado = 255
+  cmp r0, r1            ;compara r0 com 255
+  jne DigitaAlgo_Loop2  ; Fica lendo ate' que digite uma tecla valida
     
   pop r2 
   pop r1 
@@ -1344,16 +3955,631 @@ LimpaTela:
 
   loadn r0, #1200   ;apaga as 1200 posicoes da tela
   loadn r1, #' '    ;com "espaco"
-    loadn r3, #0
+  loadn r3, #0
 
-LimpaTela_Loop:; = for(r0=1200; r3>0; r3--)
+LimpaTela_Loop: ; = for(r0=1200; r3>0; r3--)
   dec r0
   outchar r1, r0
-    cmp r3, r0
+  cmp r3, r0
   jne LimpaTela_Loop
 
-    pop r3  
+  pop r3  
   pop r1
   pop r0
   pop fr
   rts
+    
+Delay:;seguindo orientações do DicaDeJogos
+
+  push r0
+  
+  inc r6
+  loadn r0, #60000
+  cmp r6, r0
+  jgr Reset_Timer
+  
+  jmp Timer_End
+  
+  Reset_Timer:
+    loadn r6, #0
+    
+  Timer_End:    
+    pop r0
+  
+  rts
+ 
+Delay2: ;seguindo orientações do DicaDeJogos
+
+  push r0
+  
+  inc r6
+  loadn r0, #1
+  cmp r6, r0
+  jgr Reset_Timer
+  
+  jmp Timer_End
+  
+  Reset_Timer:
+    loadn r6, #0
+    
+  Timer_End:    
+    pop r0
+  
+  rts
+
+Reiniciar: ;apaga a tela e dá um goto pro loop da main
+
+  inchar  r0
+  loadn   r1, #' '
+  
+  cmp r0, r1
+  jeq Restart_Activate
+  
+  jmp Restart_End
+  
+  Restart_Activate:
+  
+    call Apaga_Cobra
+    call Incializar_Cobra
+    call LimpaTela
+    call Mapa_Teste
+    loadn r3, #0
+    store Score, r1
+    
+    jmp loop_cobra_viva
+    
+  Restart_End:
+  rts
+  
+; UTILS END
+; ==================================================
+
+;LOGIC BEGIN
+;===================================================
+Incializar_Cobra:
+    push r0
+    push r1
+    
+    loadn r0, #3
+    store Tamanho_da_cobra, r0
+    
+    ; Posicao_da_cobra[0] = 460
+    loadn   r0, #Posicao_da_cobra
+    loadn   r1, #460
+    storei  r0, r1
+    
+    ; Posicao_da_cobra[1] = 459
+    inc   r0
+    dec   r1
+    storei  r0, r1
+    
+    ; Posicao_da_cobra[2] = 458
+    inc   r0
+    dec   r1
+    storei  r0, r1
+    
+    ; Posicao_da_cobra[3] = 457
+    inc   r0
+    dec   r1
+    storei  r0, r1
+    
+    ; Posicao_da_cobra[4] = -1
+    inc   r0
+    loadn   r1, #0
+    storei  r0, r1
+        
+    call Cobra_Inicio
+    
+    loadn r0, #0
+    store Direcao_da_cobra, r0
+    
+    pop r1
+    pop r0
+    
+    rts
+
+Cobra_Inicio:
+
+  push r0
+  push r1
+  push r2
+  push r3
+  
+  loadn r0, #Posicao_da_cobra  ; r0 = & Posicao_da_cobra
+  loadi r2, r0                 ; r2 = Posicao_da_cobra[0]
+    
+  loadn r3, #0                  ; r3 = 0
+  
+Print:
+      outchar r1, r2
+      inc   r0
+      loadi   r2, r0
+      cmp r2, r3
+      jne Print
+    
+      loadn   r0, #820
+      loadn   r1, #'^'
+      outchar r1, r0
+      store   Comida_index, r0
+      
+      pop r3
+      pop r2
+      pop r1
+      pop r0
+      
+      rts
+  
+Apaga_Cobra: ;a cada 'movimentação', um pedaço '@' da cobra é substituido por ' '
+
+  ;push para proteger os registradores
+  push r0
+  push r1
+  push r2
+  push r3
+  
+  loadn   r0, #Posicao_da_cobra ; r0 = & Posicao_da_cobra
+  inc   r0
+  loadn   r1, #' '              ; r1 = ' '
+  loadi   r2, r0                ; r2 = Posicao_da_cobra[0]
+  loadn   r3, #0                ; r3 = 0
+  
+  Print:
+  
+    outchar r1, r2
+    
+    inc   r0
+    loadi   r2, r0
+    
+    cmp r2, r3
+    jne Print
+  
+  pop r3
+  pop r2
+  pop r1
+  pop r0
+  
+  rts
+
+Mapa_Teste:
+
+  push r0
+  push r1
+  push r2
+  push r3
+  push r4
+  
+  loadn r0, #0
+  loadn r1, #39
+  
+  loadn r2, #'@'
+  
+  loadn r3, #40
+  loadn r4, #1200
+  
+  Stage_Loop1:
+    outchar r2, r0
+    add r0, r0, r3
+    nop
+    nop
+    outchar r2, r1  
+    
+    add r1, r1, r3
+    
+    cmp r0, r4
+    jle Stage_Loop1
+    
+  loadn r0, #1
+  loadn r1, #1161
+  
+  Stage_Loop2:
+    outchar r2, r0
+    inc r0
+    nop
+    nop
+    outchar r2, r1
+    
+    inc r1
+    
+    cmp r0, r3
+    jle Stage_Loop2
+  
+    pop r4
+    pop r3
+    pop r2
+    pop r1
+    pop r0
+  
+    rts
+
+Movimentacao_da_Cobra:
+
+  push r0 ; Direcao_da_cobra / Posicao_da_cobra
+  push r1 ; inchar
+  push r2 ; local helper
+  push r3
+  push r4
+  
+  ; Sincronização
+  loadn   r0, #5000
+  loadn   r1, #0
+  mod   r0, r6, r0    ; r1 = r0 % r1 (Teste condições de contorno)
+  cmp   r0, r1
+  jne Fim
+  
+Verifica_se_tem_comida:
+  
+    load  r0, Comida_index
+    loadn   r1, #Posicao_da_cobra
+    loadi   r2, r1
+    
+    cmp r0, r2
+    jne Atualiza_Tamanho
+    
+    load  r0, Tamanho_da_cobra
+    inc   r0
+    store   Tamanho_da_cobra, r0
+    
+    loadn   r0, #0
+    dec   r0
+    store   Tem_comida, r0
+    
+Atualiza_Tamanho: ;decrementa e garante a movimentação
+
+    loadn r0, #Posicao_da_cobra
+    loadn r1, #Posicao_da_cobra
+    load  r2, Tamanho_da_cobra
+    
+    add r0, r0, r2 ; r0 = Posicao_da_cobra[Size]
+    
+    dec r2  ; r1 = Posicao_da_cobra[Size-1], sem decrementar, não apaga do grid, e você passa por dentro
+    add r1, r1, r2
+    
+    loadn r4, #0
+    
+    Atualiza_Tamanho_Loop:
+      loadi   r3, r1
+      storei  r0, r3
+      
+      dec r0
+      dec r1
+      
+      cmp r2, r4
+      dec r2
+      
+      jne Atualiza_Tamanho_Loop 
+  
+Movimentacao_cobra_WASD:
+    inchar  r1
+    
+    loadn r2, #100  ; char r2 = 'd' 100 é o código ASCII do 'd'
+    cmp r1, r2
+    jeq Move_D
+    
+    loadn r2, #115  ; r2 = 's' 115 é o código ASCII do 's'
+    cmp r1, r2
+    jeq Move_S
+    
+    loadn r2, #97 ; r2 = 'a' 97 é o código ASCII do 'a'
+    cmp r1, r2
+    jeq Move_A
+    
+    loadn r2, #119  ; r2 = 'w' 119 é o código ASCII do 'w'
+    cmp r1, r2
+    jeq Move_W    
+    
+    jmp Atualiza_movimento
+  
+    Move_D:
+      loadn r0, #0 ;sem resetar, o registrador esará com outro valor, o que fará com que ele identifique colisão e dê game over
+      loadn r1, #2
+      load  r2, Direcao_da_cobra
+      cmp   r1, r2
+      jeq   Esquerda
+      
+      store Direcao_da_cobra, r0
+      jmp   Direita
+      
+    Move_S:
+      loadn r0, #1 ;se não houver esse comando, irá pra baixo e esquerda
+      loadn r1, #3
+      load  r2, Direcao_da_cobra
+      cmp   r1, r2
+      jeq   Cima
+      
+      store   Direcao_da_cobra, r0
+      jmp   Baixo
+      
+    Move_A:
+      loadn   r0, #2
+      loadn   r1, #0
+      load    r2, Direcao_da_cobra
+      cmp   r1, r2
+      jeq   Direita
+      
+      store   Direcao_da_cobra, r0
+      jmp   Esquerda
+      
+    Move_W:
+      loadn   r0, #3 ;impede que você avance e ande pra trás simultâneamente (você passa por dentro de si, e da comida)
+      loadn   r1, #1
+      load    r2, Direcao_da_cobra
+      cmp   r1, r2
+      jeq   Baixo
+      
+      store   Direcao_da_cobra, r0
+      jmp   Cima
+  
+Atualiza_movimento: ;compara o que foi digitado com o valor do registrador, se iguais, ele move para a direão 'X'
+  
+    load  r0, Direcao_da_cobra
+        
+    loadn   r2, #0
+    cmp   r0, r2
+    jeq   Direita
+    
+    loadn   r2, #1
+    cmp   r0, r2
+    jeq   Baixo
+    
+    loadn   r2, #2
+    cmp   r0, r2
+    jeq   Esquerda
+    
+    loadn   r2, #3
+    cmp   r0, r2
+    jeq   Cima
+    
+    jmp Fim
+    
+    Direita:
+      loadn   r0, #Posicao_da_cobra ; r0 = & Posicao_da_cobra
+      loadi   r1, r0      ; r1 = Posicao_da_cobra[0]
+      inc   r1        ; r1++
+      storei  r0, r1
+      
+      jmp Fim
+        
+    Baixo:
+      loadn   r0, #Posicao_da_cobra ; r0 = & Posicao_da_cobra
+      loadi   r1, r0                ; r1 = Posicao_da_cobra[0]
+      loadn   r2, #40
+      add   r1, r1, r2
+      storei  r0, r1
+      jmp Fim
+    
+    Esquerda:
+      loadn   r0, #Posicao_da_cobra ; r0 = & Posicao_da_cobra
+      loadi   r1, r0                ; r1 = Posicao_da_cobra[0]
+      dec   r1                      ; r1--
+      storei  r0, r1
+      
+      jmp Fim
+      
+    Cima:
+      loadn   r0, #Posicao_da_cobra ; r0 = & Posicao_da_cobra
+      loadi   r1, r0                ; r1 = Posicao_da_cobra[0]
+      loadn   r2, #40
+      sub   r1, r1, r2
+      storei  r0, r1
+      
+      jmp Fim
+  
+Fim:
+    pop r4
+    pop r3
+    pop r2
+    pop r1
+    pop r0
+    rts
+
+Repor_Comida: ;lógica para reposição de comida
+  push r0
+  push r1
+  push r2
+  push r3
+
+  loadn r0, #0
+  dec   r0
+  load  r1, Tem_comida
+  cmp   r0, r1
+  
+  jne Pops_Reposicoes
+  
+  loadn r1, #0
+  store Tem_comida, r1
+  load  r1, Comida_index
+  
+  load r0, Direcao_da_cobra
+  
+  loadn r2, #0
+  cmp r0, r2
+  jeq Atualiza_Direita
+  
+  loadn r2, #1
+  cmp r0, r2
+  jeq Atualiza_Baixo
+  
+  loadn r2, #2
+  cmp r0, r2
+  jeq Atualiza_Esquerda
+  
+  loadn r2, #3
+  cmp r0, r2
+  jeq Atualiza_Cima
+  
+  Atualiza_Direita:
+  
+    loadn r3, #355
+    add r1, r1, r3
+    jmp Insere_Comida_Grid
+    
+  Atualiza_Baixo:
+  
+    loadn r3, #445
+    sub r1, r1, r3
+    jmp Insere_Comida_Grid
+    
+  Atualiza_Esquerda:
+  
+    loadn r3, #395
+    sub r1, r1, r3
+    jmp Insere_Comida_Grid
+    
+  Atualiza_Cima:
+  
+    loadn r3, #485
+    add r1, r1, r3
+    jmp Insere_Comida_Grid
+  
+  
+  Insere_Comida_Grid:
+  
+    loadn r2, #40 ;impede de a comida ser reposta fora do grid superior
+    cmp r1, r2
+    jle Comida_Inferior_Grid
+    
+    loadn r2, #1160 ;impede de a comida ser reposta fora do grid inferior
+    cmp r1, r2
+    jgr Comida_Superior_Grid
+    
+    loadn r0, #40 ;impede de a comida ser reposta fora do grid lateral esquerdo
+    loadn r3, #1
+    mod r2, r1, r0
+    cmp r2, r3
+    jel Comida_Esquerda_Grid
+    
+    loadn r0, #40 ;impede de a comida ser reposta fora do grid lateral direito
+    loadn r3, #39
+    mod r2, r1, r0
+    cmp r2, r3
+    jeg Comida_Direita_Grid
+    
+    jmp Atualiza_Comida_Fim
+    
+Comida_Superior_Grid:
+    
+      loadn r1, #215
+      jmp Atualiza_Comida_Fim
+      
+Comida_Inferior_Grid:
+    
+      loadn r1, #1035
+      jmp Atualiza_Comida_Fim
+      
+Comida_Direita_Grid:
+    
+      loadn r1, #835
+      jmp Atualiza_Comida_Fim
+      
+Comida_Esquerda_Grid:
+    
+      loadn r1, #205
+      jmp Atualiza_Comida_Fim
+      
+Atualiza_Comida_Fim:
+    
+      store Comida_index, r1
+      loadn r0, #'^'
+      outchar r0, r1
+  
+Pops_Reposicoes:
+    pop r3
+    pop r2
+    pop r1
+    pop r0
+    rts
+
+Morreu:
+
+  loadn r0, #Posicao_da_cobra
+  loadi r1, r0
+  
+  loadn r2, #40
+  loadn r3, #39     ;impede da cobra ultrapassar grid direita
+  mod r2, r1, r2    ; r2 = r1 % r2 (Teste condições de contorno)
+  cmp r2, r3
+  jeq Inicia_Fim
+  
+  loadn r2, #40
+  loadn r3, #0      ;impede da cobra ultrapassar grid esquerda
+  mod r2, r1, r2    ; r2 = r1 % r2 (Teste condições de contorno)
+  cmp r2, r3
+  jeq Inicia_Fim
+  
+  loadn r2, #40 ;impede da cobra ultrapassar grid cima
+  cmp r1, r2
+  jle Inicia_Fim
+  
+  loadn r2, #1160 ;impede da cobra ultrapassar grid baixo
+  cmp r1, r2
+  jgr Inicia_Fim
+  
+Checa_Colisao_Nela_Mesma:
+  
+    load  r2, Tamanho_da_cobra
+    loadn   r3, #1
+    loadi   r4, r0   ; r0 = Posição da cabeça
+    
+Loop_Colisao:
+      inc   r0
+      loadi r1, r0
+      cmp   r1, r4
+      jeq Inicia_Fim
+      
+      dec r2
+      cmp r2, r3
+      jne Loop_Colisao
+    
+      jmp Morreu_rts
+  
+Inicia_Fim:
+    load  r0, Comida_index
+    loadn   r1, #' '
+    outchar r1, r0
+  
+    call printtela_final_fixScreen
+    
+    jmp Reinicio_loop
+  
+    Morreu_rts:
+      rts ; verifica se ocorreu colisão em alguma parede ou a cobra bateu nela mesma 
+
+Desenha_Cobra_E_Comida:
+
+  push r0   ; Posição na tela para imprimir a string
+  push r1   ; Endereço da string a ser impressa
+  push r2   ; Cor da mensagem
+  push r3
+  
+  loadn   r0, #1000
+  loadn   r1, #0
+  mod     r0, r6, r0  ; r1 = r0 % r1
+  cmp     r0, r1
+  jne Draw_End
+  
+  load    r0, Comida_index
+  loadn   r1, #'^'
+  outchar r1, r0
+  
+  loadn   r0, #Posicao_da_cobra ; r0 = &Posicao_da_cobra
+  loadn   r1, #'@'        ; r1 = '@'
+  loadi   r2, r0          ; r2 = Posicao_da_cobra[0] -> cabeça
+  outchar r1, r2      
+  
+  loadn   r0, #Posicao_da_cobra ; r0 = & Posicao_da_cobra
+  loadn   r1, #' '              ; r1 = ' '
+  load  r3, Tamanho_da_cobra    ; r3 = Tamanho_da_cobra
+  add   r0, r0, r3              ; r0 += Tamanho_da_cobra
+  loadi   r2, r0                ; r2 = Posicao_da_cobra[Tamanho_da_cobra]
+  outchar r1, r2                ; printf("%s", posição_da_cobra);
+  
+  Draw_End:
+    pop r3
+    pop r2
+    pop r1
+    pop r0
+  
+  rts
+  
+;LOGIC END
+;===================================================
