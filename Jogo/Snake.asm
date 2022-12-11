@@ -5,7 +5,6 @@ jmp inicio
 Posicao_da_cobra: var #500
 Tamanho_da_cobra:	var #1
 Direcao_da_cobra:	var #1 ; ;WASD
-Score: var #1
 
 Comida_index:	var #1
 Tem_comida:	var #1 ;boolean
@@ -13,10 +12,14 @@ Letra: var #1
 Cobra : var #1200
 instrucoes_basicas : var #1200
 tela_final_fix : var #1200
+in_game : var #1200
+
 ;VARIAVEIS END
 ;=====================================
+      
 
-                      
+;LOOP BEGIN
+;=====================================             
 inicio:
 
   call printCobraScreen
@@ -31,7 +34,7 @@ intrucoes:
 main:
 
     call Incializar_Cobra
-    call Mapa_Teste
+    call printin_gameScreen
 
       loop_cobra_viva:
             
@@ -49,7 +52,8 @@ main:
       
         call Reiniciar
         jmp Reinicio_loop
-        
+;LOOP END
+;=====================================
     
 ; TELAS
 ; ================================================
@@ -2598,6 +2602,1292 @@ printinstrucoes_basicasScreenLoop:
   pop R1
   pop R0
   rts
+  
+in_game:
+  static in_game + #0, #2880
+  static in_game + #1, #2880
+  static in_game + #2, #2880
+  static in_game + #3, #2880
+  static in_game + #4, #2880
+  static in_game + #5, #2880
+  static in_game + #6, #2880
+  static in_game + #7, #2880
+  static in_game + #8, #2880
+  static in_game + #9, #2880
+  static in_game + #10, #2880
+  static in_game + #11, #2880
+  static in_game + #12, #2880
+  static in_game + #13, #2880
+  static in_game + #14, #2880
+  static in_game + #15, #2880
+  static in_game + #16, #2880
+  static in_game + #17, #2880
+  static in_game + #18, #2880
+  static in_game + #19, #2880
+  static in_game + #20, #2880
+  static in_game + #21, #2880
+  static in_game + #22, #2880
+  static in_game + #23, #2880
+  static in_game + #24, #2880
+  static in_game + #25, #2880
+  static in_game + #26, #2880
+  static in_game + #27, #2880
+  static in_game + #28, #2880
+  static in_game + #29, #2880
+  static in_game + #30, #2880
+  static in_game + #31, #2880
+  static in_game + #32, #2880
+  static in_game + #33, #2880
+  static in_game + #34, #2880
+  static in_game + #35, #2880
+  static in_game + #36, #2880
+  static in_game + #37, #2880
+  static in_game + #38, #2880
+  static in_game + #39, #2880
+
+  ;Linha 1
+  static in_game + #40, #2880
+  static in_game + #41, #3967
+  static in_game + #42, #3967
+  static in_game + #43, #3967
+  static in_game + #44, #3967
+  static in_game + #45, #3967
+  static in_game + #46, #3967
+  static in_game + #47, #3967
+  static in_game + #48, #3967
+  static in_game + #49, #3967
+  static in_game + #50, #3967
+  static in_game + #51, #3967
+  static in_game + #52, #3967
+  static in_game + #53, #3967
+  static in_game + #54, #3967
+  static in_game + #55, #3967
+  static in_game + #56, #3967
+  static in_game + #57, #3967
+  static in_game + #58, #3967
+  static in_game + #59, #3967
+  static in_game + #60, #3967
+  static in_game + #61, #3967
+  static in_game + #62, #3967
+  static in_game + #63, #3967
+  static in_game + #64, #3967
+  static in_game + #65, #3967
+  static in_game + #66, #3967
+  static in_game + #67, #3967
+  static in_game + #68, #3967
+  static in_game + #69, #3967
+  static in_game + #70, #3967
+  static in_game + #71, #3967
+  static in_game + #72, #3967
+  static in_game + #73, #3967
+  static in_game + #74, #3967
+  static in_game + #75, #3967
+  static in_game + #76, #3967
+  static in_game + #77, #3967
+  static in_game + #78, #3967
+  static in_game + #79, #2880
+
+  ;Linha 2
+  static in_game + #80, #2880
+  static in_game + #81, #3967
+  static in_game + #82, #3967
+  static in_game + #83, #3967
+  static in_game + #84, #3967
+  static in_game + #85, #3967
+  static in_game + #86, #3967
+  static in_game + #87, #3967
+  static in_game + #88, #3967
+  static in_game + #89, #3967
+  static in_game + #90, #3967
+  static in_game + #91, #3967
+  static in_game + #92, #3967
+  static in_game + #93, #3967
+  static in_game + #94, #3967
+  static in_game + #95, #3967
+  static in_game + #96, #3967
+  static in_game + #97, #3967
+  static in_game + #98, #3967
+  static in_game + #99, #3967
+  static in_game + #100, #3967
+  static in_game + #101, #3967
+  static in_game + #102, #3967
+  static in_game + #103, #3967
+  static in_game + #104, #3967
+  static in_game + #105, #3967
+  static in_game + #106, #3967
+  static in_game + #107, #3967
+  static in_game + #108, #3967
+  static in_game + #109, #3967
+  static in_game + #110, #3967
+  static in_game + #111, #3967
+  static in_game + #112, #3967
+  static in_game + #113, #3967
+  static in_game + #114, #3967
+  static in_game + #115, #3967
+  static in_game + #116, #3967
+  static in_game + #117, #3967
+  static in_game + #118, #3967
+  static in_game + #119, #2880
+
+  ;Linha 3
+  static in_game + #120, #2880
+  static in_game + #121, #3967
+  static in_game + #122, #3967
+  static in_game + #123, #3967
+  static in_game + #124, #3967
+  static in_game + #125, #3967
+  static in_game + #126, #3967
+  static in_game + #127, #3967
+  static in_game + #128, #3967
+  static in_game + #129, #3967
+  static in_game + #130, #3967
+  static in_game + #131, #3967
+  static in_game + #132, #3967
+  static in_game + #133, #3967
+  static in_game + #134, #3967
+  static in_game + #135, #3967
+  static in_game + #136, #3967
+  static in_game + #137, #3967
+  static in_game + #138, #3967
+  static in_game + #139, #3967
+  static in_game + #140, #3967
+  static in_game + #141, #3967
+  static in_game + #142, #3967
+  static in_game + #143, #3967
+  static in_game + #144, #3967
+  static in_game + #145, #3967
+  static in_game + #146, #3967
+  static in_game + #147, #3967
+  static in_game + #148, #3967
+  static in_game + #149, #3967
+  static in_game + #150, #3967
+  static in_game + #151, #3967
+  static in_game + #152, #3967
+  static in_game + #153, #3967
+  static in_game + #154, #3967
+  static in_game + #155, #3967
+  static in_game + #156, #3967
+  static in_game + #157, #3967
+  static in_game + #158, #3967
+  static in_game + #159, #2880
+
+  ;Linha 4
+  static in_game + #160, #2880
+  static in_game + #161, #3967
+  static in_game + #162, #3967
+  static in_game + #163, #3967
+  static in_game + #164, #3967
+  static in_game + #165, #3967
+  static in_game + #166, #3967
+  static in_game + #167, #3967
+  static in_game + #168, #3967
+  static in_game + #169, #3967
+  static in_game + #170, #3967
+  static in_game + #171, #3967
+  static in_game + #172, #3967
+  static in_game + #173, #3967
+  static in_game + #174, #3967
+  static in_game + #175, #3967
+  static in_game + #176, #3967
+  static in_game + #177, #3967
+  static in_game + #178, #3967
+  static in_game + #179, #3967
+  static in_game + #180, #3967
+  static in_game + #181, #3967
+  static in_game + #182, #3967
+  static in_game + #183, #3967
+  static in_game + #184, #3967
+  static in_game + #185, #3967
+  static in_game + #186, #3967
+  static in_game + #187, #3967
+  static in_game + #188, #3967
+  static in_game + #189, #3967
+  static in_game + #190, #3967
+  static in_game + #191, #3967
+  static in_game + #192, #3967
+  static in_game + #193, #3967
+  static in_game + #194, #3967
+  static in_game + #195, #3967
+  static in_game + #196, #3967
+  static in_game + #197, #3967
+  static in_game + #198, #3967
+  static in_game + #199, #2880
+
+  ;Linha 5
+  static in_game + #200, #2880
+  static in_game + #201, #3967
+  static in_game + #202, #3967
+  static in_game + #203, #3967
+  static in_game + #204, #3967
+  static in_game + #205, #3967
+  static in_game + #206, #3967
+  static in_game + #207, #3967
+  static in_game + #208, #3967
+  static in_game + #209, #3967
+  static in_game + #210, #3967
+  static in_game + #211, #3967
+  static in_game + #212, #3967
+  static in_game + #213, #3967
+  static in_game + #214, #3967
+  static in_game + #215, #3967
+  static in_game + #216, #3967
+  static in_game + #217, #3967
+  static in_game + #218, #3967
+  static in_game + #219, #3967
+  static in_game + #220, #3967
+  static in_game + #221, #3967
+  static in_game + #222, #3967
+  static in_game + #223, #3967
+  static in_game + #224, #3967
+  static in_game + #225, #3967
+  static in_game + #226, #3967
+  static in_game + #227, #3967
+  static in_game + #228, #3967
+  static in_game + #229, #3967
+  static in_game + #230, #3967
+  static in_game + #231, #3967
+  static in_game + #232, #3967
+  static in_game + #233, #3967
+  static in_game + #234, #3967
+  static in_game + #235, #3967
+  static in_game + #236, #3967
+  static in_game + #237, #3967
+  static in_game + #238, #3967
+  static in_game + #239, #2880
+
+  ;Linha 6
+  static in_game + #240, #2880
+  static in_game + #241, #3967
+  static in_game + #242, #3967
+  static in_game + #243, #3967
+  static in_game + #244, #3967
+  static in_game + #245, #3967
+  static in_game + #246, #3967
+  static in_game + #247, #3967
+  static in_game + #248, #3967
+  static in_game + #249, #3967
+  static in_game + #250, #3967
+  static in_game + #251, #3967
+  static in_game + #252, #3967
+  static in_game + #253, #3967
+  static in_game + #254, #3967
+  static in_game + #255, #3967
+  static in_game + #256, #3967
+  static in_game + #257, #3967
+  static in_game + #258, #3967
+  static in_game + #259, #3967
+  static in_game + #260, #3967
+  static in_game + #261, #3967
+  static in_game + #262, #3967
+  static in_game + #263, #3967
+  static in_game + #264, #3967
+  static in_game + #265, #3967
+  static in_game + #266, #3967
+  static in_game + #267, #3967
+  static in_game + #268, #3967
+  static in_game + #269, #3967
+  static in_game + #270, #3967
+  static in_game + #271, #3967
+  static in_game + #272, #3967
+  static in_game + #273, #3967
+  static in_game + #274, #3967
+  static in_game + #275, #3967
+  static in_game + #276, #3967
+  static in_game + #277, #3967
+  static in_game + #278, #3967
+  static in_game + #279, #2880
+
+  ;Linha 7
+  static in_game + #280, #2880
+  static in_game + #281, #3967
+  static in_game + #282, #3967
+  static in_game + #283, #3967
+  static in_game + #284, #3967
+  static in_game + #285, #3967
+  static in_game + #286, #3967
+  static in_game + #287, #3967
+  static in_game + #288, #3967
+  static in_game + #289, #3967
+  static in_game + #290, #3967
+  static in_game + #291, #3967
+  static in_game + #292, #3967
+  static in_game + #293, #3967
+  static in_game + #294, #3967
+  static in_game + #295, #3967
+  static in_game + #296, #3967
+  static in_game + #297, #3967
+  static in_game + #298, #3967
+  static in_game + #299, #3967
+  static in_game + #300, #3967
+  static in_game + #301, #3967
+  static in_game + #302, #3967
+  static in_game + #303, #3967
+  static in_game + #304, #3967
+  static in_game + #305, #3967
+  static in_game + #306, #3967
+  static in_game + #307, #3967
+  static in_game + #308, #3967
+  static in_game + #309, #3967
+  static in_game + #310, #3967
+  static in_game + #311, #3967
+  static in_game + #312, #3967
+  static in_game + #313, #3967
+  static in_game + #314, #3967
+  static in_game + #315, #3967
+  static in_game + #316, #3967
+  static in_game + #317, #3967
+  static in_game + #318, #3967
+  static in_game + #319, #2880
+
+  ;Linha 8
+  static in_game + #320, #2880
+  static in_game + #321, #3967
+  static in_game + #322, #3967
+  static in_game + #323, #3967
+  static in_game + #324, #3967
+  static in_game + #325, #3967
+  static in_game + #326, #3967
+  static in_game + #327, #3967
+  static in_game + #328, #3967
+  static in_game + #329, #3967
+  static in_game + #330, #3967
+  static in_game + #331, #3967
+  static in_game + #332, #3967
+  static in_game + #333, #3967
+  static in_game + #334, #3967
+  static in_game + #335, #3967
+  static in_game + #336, #3967
+  static in_game + #337, #3967
+  static in_game + #338, #3967
+  static in_game + #339, #3967
+  static in_game + #340, #3967
+  static in_game + #341, #3967
+  static in_game + #342, #3967
+  static in_game + #343, #3967
+  static in_game + #344, #3967
+  static in_game + #345, #3967
+  static in_game + #346, #3967
+  static in_game + #347, #3967
+  static in_game + #348, #3967
+  static in_game + #349, #3967
+  static in_game + #350, #3967
+  static in_game + #351, #3967
+  static in_game + #352, #3967
+  static in_game + #353, #3967
+  static in_game + #354, #3967
+  static in_game + #355, #3967
+  static in_game + #356, #3967
+  static in_game + #357, #3967
+  static in_game + #358, #3967
+  static in_game + #359, #2880
+
+  ;Linha 9
+  static in_game + #360, #2880
+  static in_game + #361, #3967
+  static in_game + #362, #3967
+  static in_game + #363, #3967
+  static in_game + #364, #3967
+  static in_game + #365, #3967
+  static in_game + #366, #3967
+  static in_game + #367, #3967
+  static in_game + #368, #3967
+  static in_game + #369, #3967
+  static in_game + #370, #3967
+  static in_game + #371, #3967
+  static in_game + #372, #3967
+  static in_game + #373, #3967
+  static in_game + #374, #3967
+  static in_game + #375, #3967
+  static in_game + #376, #3967
+  static in_game + #377, #3967
+  static in_game + #378, #3967
+  static in_game + #379, #3967
+  static in_game + #380, #3967
+  static in_game + #381, #3967
+  static in_game + #382, #3967
+  static in_game + #383, #3967
+  static in_game + #384, #3967
+  static in_game + #385, #3967
+  static in_game + #386, #3967
+  static in_game + #387, #3967
+  static in_game + #388, #3967
+  static in_game + #389, #3967
+  static in_game + #390, #3967
+  static in_game + #391, #3967
+  static in_game + #392, #3967
+  static in_game + #393, #3967
+  static in_game + #394, #3967
+  static in_game + #395, #3967
+  static in_game + #396, #3967
+  static in_game + #397, #3967
+  static in_game + #398, #3967
+  static in_game + #399, #2880
+
+  ;Linha 10
+  static in_game + #400, #2880
+  static in_game + #401, #3967
+  static in_game + #402, #3967
+  static in_game + #403, #3967
+  static in_game + #404, #3967
+  static in_game + #405, #3967
+  static in_game + #406, #3967
+  static in_game + #407, #3967
+  static in_game + #408, #3967
+  static in_game + #409, #3967
+  static in_game + #410, #3967
+  static in_game + #411, #3967
+  static in_game + #412, #3967
+  static in_game + #413, #3967
+  static in_game + #414, #3967
+  static in_game + #415, #3967
+  static in_game + #416, #3967
+  static in_game + #417, #3967
+  static in_game + #418, #3967
+  static in_game + #419, #3967
+  static in_game + #420, #3967
+  static in_game + #421, #3967
+  static in_game + #422, #3967
+  static in_game + #423, #3967
+  static in_game + #424, #3967
+  static in_game + #425, #3967
+  static in_game + #426, #3967
+  static in_game + #427, #3967
+  static in_game + #428, #3967
+  static in_game + #429, #3967
+  static in_game + #430, #3967
+  static in_game + #431, #3967
+  static in_game + #432, #3967
+  static in_game + #433, #3967
+  static in_game + #434, #3967
+  static in_game + #435, #3967
+  static in_game + #436, #3967
+  static in_game + #437, #3967
+  static in_game + #438, #3967
+  static in_game + #439, #2880
+
+  ;Linha 11
+  static in_game + #440, #2880
+  static in_game + #441, #3967
+  static in_game + #442, #3967
+  static in_game + #443, #3967
+  static in_game + #444, #3967
+  static in_game + #445, #3967
+  static in_game + #446, #3967
+  static in_game + #447, #3967
+  static in_game + #448, #3967
+  static in_game + #449, #3967
+  static in_game + #450, #3967
+  static in_game + #451, #3967
+  static in_game + #452, #3967
+  static in_game + #453, #3967
+  static in_game + #454, #3967
+  static in_game + #455, #3967
+  static in_game + #456, #3967
+  static in_game + #457, #3967
+  static in_game + #458, #3967
+  static in_game + #459, #3967
+  static in_game + #460, #3967
+  static in_game + #461, #3967
+  static in_game + #462, #3967
+  static in_game + #463, #3967
+  static in_game + #464, #3967
+  static in_game + #465, #3967
+  static in_game + #466, #3967
+  static in_game + #467, #3967
+  static in_game + #468, #3967
+  static in_game + #469, #3967
+  static in_game + #470, #3967
+  static in_game + #471, #3967
+  static in_game + #472, #3967
+  static in_game + #473, #3967
+  static in_game + #474, #3967
+  static in_game + #475, #3967
+  static in_game + #476, #3967
+  static in_game + #477, #3967
+  static in_game + #478, #3967
+  static in_game + #479, #2880
+
+  ;Linha 12
+  static in_game + #480, #2880
+  static in_game + #481, #3967
+  static in_game + #482, #3967
+  static in_game + #483, #3967
+  static in_game + #484, #3967
+  static in_game + #485, #3967
+  static in_game + #486, #3967
+  static in_game + #487, #3967
+  static in_game + #488, #3967
+  static in_game + #489, #3967
+  static in_game + #490, #3967
+  static in_game + #491, #3967
+  static in_game + #492, #3967
+  static in_game + #493, #3967
+  static in_game + #494, #3967
+  static in_game + #495, #3967
+  static in_game + #496, #3967
+  static in_game + #497, #3967
+  static in_game + #498, #3967
+  static in_game + #499, #3967
+  static in_game + #500, #3967
+  static in_game + #501, #3967
+  static in_game + #502, #3967
+  static in_game + #503, #3967
+  static in_game + #504, #3967
+  static in_game + #505, #3967
+  static in_game + #506, #3967
+  static in_game + #507, #3967
+  static in_game + #508, #3967
+  static in_game + #509, #3967
+  static in_game + #510, #3967
+  static in_game + #511, #3967
+  static in_game + #512, #3967
+  static in_game + #513, #3967
+  static in_game + #514, #3967
+  static in_game + #515, #3967
+  static in_game + #516, #3967
+  static in_game + #517, #3967
+  static in_game + #518, #3967
+  static in_game + #519, #2880
+
+  ;Linha 13
+  static in_game + #520, #2880
+  static in_game + #521, #3967
+  static in_game + #522, #3967
+  static in_game + #523, #3967
+  static in_game + #524, #3967
+  static in_game + #525, #3967
+  static in_game + #526, #3967
+  static in_game + #527, #3967
+  static in_game + #528, #3967
+  static in_game + #529, #3967
+  static in_game + #530, #3967
+  static in_game + #531, #3967
+  static in_game + #532, #3967
+  static in_game + #533, #3967
+  static in_game + #534, #3967
+  static in_game + #535, #3967
+  static in_game + #536, #3967
+  static in_game + #537, #3967
+  static in_game + #538, #3967
+  static in_game + #539, #3967
+  static in_game + #540, #3967
+  static in_game + #541, #3967
+  static in_game + #542, #3967
+  static in_game + #543, #3967
+  static in_game + #544, #3967
+  static in_game + #545, #3967
+  static in_game + #546, #3967
+  static in_game + #547, #3967
+  static in_game + #548, #3967
+  static in_game + #549, #3967
+  static in_game + #550, #3967
+  static in_game + #551, #3967
+  static in_game + #552, #3967
+  static in_game + #553, #3967
+  static in_game + #554, #3967
+  static in_game + #555, #3967
+  static in_game + #556, #3967
+  static in_game + #557, #3967
+  static in_game + #558, #3967
+  static in_game + #559, #2880
+
+  ;Linha 14
+  static in_game + #560, #2880
+  static in_game + #561, #3967
+  static in_game + #562, #3967
+  static in_game + #563, #3967
+  static in_game + #564, #3967
+  static in_game + #565, #3967
+  static in_game + #566, #3967
+  static in_game + #567, #3967
+  static in_game + #568, #3967
+  static in_game + #569, #3967
+  static in_game + #570, #3967
+  static in_game + #571, #3967
+  static in_game + #572, #3967
+  static in_game + #573, #3967
+  static in_game + #574, #3967
+  static in_game + #575, #3967
+  static in_game + #576, #3967
+  static in_game + #577, #3967
+  static in_game + #578, #3967
+  static in_game + #579, #3967
+  static in_game + #580, #3967
+  static in_game + #581, #3967
+  static in_game + #582, #3967
+  static in_game + #583, #3967
+  static in_game + #584, #3967
+  static in_game + #585, #3967
+  static in_game + #586, #3967
+  static in_game + #587, #3967
+  static in_game + #588, #3967
+  static in_game + #589, #3967
+  static in_game + #590, #3967
+  static in_game + #591, #3967
+  static in_game + #592, #3967
+  static in_game + #593, #3967
+  static in_game + #594, #3967
+  static in_game + #595, #3967
+  static in_game + #596, #3967
+  static in_game + #597, #3967
+  static in_game + #598, #3967
+  static in_game + #599, #2880
+
+  ;Linha 15
+  static in_game + #600, #2880
+  static in_game + #601, #3967
+  static in_game + #602, #3967
+  static in_game + #603, #3967
+  static in_game + #604, #3967
+  static in_game + #605, #3967
+  static in_game + #606, #3967
+  static in_game + #607, #3967
+  static in_game + #608, #3967
+  static in_game + #609, #3967
+  static in_game + #610, #3967
+  static in_game + #611, #3967
+  static in_game + #612, #3967
+  static in_game + #613, #3967
+  static in_game + #614, #3967
+  static in_game + #615, #3967
+  static in_game + #616, #3967
+  static in_game + #617, #3967
+  static in_game + #618, #3967
+  static in_game + #619, #3967
+  static in_game + #620, #3967
+  static in_game + #621, #3967
+  static in_game + #622, #3967
+  static in_game + #623, #3967
+  static in_game + #624, #3967
+  static in_game + #625, #3967
+  static in_game + #626, #3967
+  static in_game + #627, #3967
+  static in_game + #628, #3967
+  static in_game + #629, #3967
+  static in_game + #630, #3967
+  static in_game + #631, #3967
+  static in_game + #632, #3967
+  static in_game + #633, #3967
+  static in_game + #634, #3967
+  static in_game + #635, #3967
+  static in_game + #636, #3967
+  static in_game + #637, #3967
+  static in_game + #638, #3967
+  static in_game + #639, #2880
+
+  ;Linha 16
+  static in_game + #640, #2880
+  static in_game + #641, #3967
+  static in_game + #642, #3967
+  static in_game + #643, #3967
+  static in_game + #644, #3967
+  static in_game + #645, #3967
+  static in_game + #646, #3967
+  static in_game + #647, #3967
+  static in_game + #648, #3967
+  static in_game + #649, #3967
+  static in_game + #650, #3967
+  static in_game + #651, #3967
+  static in_game + #652, #3967
+  static in_game + #653, #3967
+  static in_game + #654, #3967
+  static in_game + #655, #3967
+  static in_game + #656, #3967
+  static in_game + #657, #3967
+  static in_game + #658, #3967
+  static in_game + #659, #3967
+  static in_game + #660, #3967
+  static in_game + #661, #3967
+  static in_game + #662, #3967
+  static in_game + #663, #3967
+  static in_game + #664, #3967
+  static in_game + #665, #3967
+  static in_game + #666, #3967
+  static in_game + #667, #3967
+  static in_game + #668, #3967
+  static in_game + #669, #3967
+  static in_game + #670, #3967
+  static in_game + #671, #3967
+  static in_game + #672, #3967
+  static in_game + #673, #3967
+  static in_game + #674, #3967
+  static in_game + #675, #3967
+  static in_game + #676, #3967
+  static in_game + #677, #3967
+  static in_game + #678, #3967
+  static in_game + #679, #2880
+
+  ;Linha 17
+  static in_game + #680, #2880
+  static in_game + #681, #3967
+  static in_game + #682, #3967
+  static in_game + #683, #3967
+  static in_game + #684, #3967
+  static in_game + #685, #3967
+  static in_game + #686, #3967
+  static in_game + #687, #3967
+  static in_game + #688, #3967
+  static in_game + #689, #3967
+  static in_game + #690, #3967
+  static in_game + #691, #3967
+  static in_game + #692, #3967
+  static in_game + #693, #3967
+  static in_game + #694, #3967
+  static in_game + #695, #3967
+  static in_game + #696, #3967
+  static in_game + #697, #3967
+  static in_game + #698, #3967
+  static in_game + #699, #3967
+  static in_game + #700, #3967
+  static in_game + #701, #3967
+  static in_game + #702, #3967
+  static in_game + #703, #3967
+  static in_game + #704, #3967
+  static in_game + #705, #3967
+  static in_game + #706, #3967
+  static in_game + #707, #3967
+  static in_game + #708, #3967
+  static in_game + #709, #3967
+  static in_game + #710, #3967
+  static in_game + #711, #3967
+  static in_game + #712, #3967
+  static in_game + #713, #3967
+  static in_game + #714, #3967
+  static in_game + #715, #3967
+  static in_game + #716, #3967
+  static in_game + #717, #3967
+  static in_game + #718, #3967
+  static in_game + #719, #2880
+
+  ;Linha 18
+  static in_game + #720, #2880
+  static in_game + #721, #3967
+  static in_game + #722, #3967
+  static in_game + #723, #3967
+  static in_game + #724, #3967
+  static in_game + #725, #3967
+  static in_game + #726, #3967
+  static in_game + #727, #3967
+  static in_game + #728, #3967
+  static in_game + #729, #3967
+  static in_game + #730, #3967
+  static in_game + #731, #3967
+  static in_game + #732, #3967
+  static in_game + #733, #3967
+  static in_game + #734, #3967
+  static in_game + #735, #3967
+  static in_game + #736, #3967
+  static in_game + #737, #3967
+  static in_game + #738, #3967
+  static in_game + #739, #3967
+  static in_game + #740, #3967
+  static in_game + #741, #3967
+  static in_game + #742, #3967
+  static in_game + #743, #3967
+  static in_game + #744, #3967
+  static in_game + #745, #3967
+  static in_game + #746, #3967
+  static in_game + #747, #3967
+  static in_game + #748, #3967
+  static in_game + #749, #3967
+  static in_game + #750, #3967
+  static in_game + #751, #3967
+  static in_game + #752, #3967
+  static in_game + #753, #3967
+  static in_game + #754, #3967
+  static in_game + #755, #3967
+  static in_game + #756, #3967
+  static in_game + #757, #3967
+  static in_game + #758, #3967
+  static in_game + #759, #2880
+
+  ;Linha 19
+  static in_game + #760, #2880
+  static in_game + #761, #3967
+  static in_game + #762, #3967
+  static in_game + #763, #3967
+  static in_game + #764, #3967
+  static in_game + #765, #3967
+  static in_game + #766, #3967
+  static in_game + #767, #3967
+  static in_game + #768, #3967
+  static in_game + #769, #3967
+  static in_game + #770, #3967
+  static in_game + #771, #3967
+  static in_game + #772, #3967
+  static in_game + #773, #3967
+  static in_game + #774, #3967
+  static in_game + #775, #3967
+  static in_game + #776, #3967
+  static in_game + #777, #3967
+  static in_game + #778, #3967
+  static in_game + #779, #3967
+  static in_game + #780, #3967
+  static in_game + #781, #3967
+  static in_game + #782, #3967
+  static in_game + #783, #3967
+  static in_game + #784, #3967
+  static in_game + #785, #3967
+  static in_game + #786, #3967
+  static in_game + #787, #3967
+  static in_game + #788, #3967
+  static in_game + #789, #3967
+  static in_game + #790, #3967
+  static in_game + #791, #3967
+  static in_game + #792, #3967
+  static in_game + #793, #3967
+  static in_game + #794, #3967
+  static in_game + #795, #3967
+  static in_game + #796, #3967
+  static in_game + #797, #3967
+  static in_game + #798, #3967
+  static in_game + #799, #2880
+
+  ;Linha 20
+  static in_game + #800, #2880
+  static in_game + #801, #3967
+  static in_game + #802, #3967
+  static in_game + #803, #3967
+  static in_game + #804, #3967
+  static in_game + #805, #3967
+  static in_game + #806, #3967
+  static in_game + #807, #3967
+  static in_game + #808, #3967
+  static in_game + #809, #3967
+  static in_game + #810, #3967
+  static in_game + #811, #3967
+  static in_game + #812, #3967
+  static in_game + #813, #3967
+  static in_game + #814, #3967
+  static in_game + #815, #3967
+  static in_game + #816, #3967
+  static in_game + #817, #3967
+  static in_game + #818, #3967
+  static in_game + #819, #3967
+  static in_game + #820, #3967
+  static in_game + #821, #3967
+  static in_game + #822, #3967
+  static in_game + #823, #3967
+  static in_game + #824, #3967
+  static in_game + #825, #3967
+  static in_game + #826, #3967
+  static in_game + #827, #3967
+  static in_game + #828, #3967
+  static in_game + #829, #3967
+  static in_game + #830, #3967
+  static in_game + #831, #3967
+  static in_game + #832, #3967
+  static in_game + #833, #3967
+  static in_game + #834, #3967
+  static in_game + #835, #3967
+  static in_game + #836, #3967
+  static in_game + #837, #3967
+  static in_game + #838, #3967
+  static in_game + #839, #2880
+
+  ;Linha 21
+  static in_game + #840, #2880
+  static in_game + #841, #3967
+  static in_game + #842, #3967
+  static in_game + #843, #3967
+  static in_game + #844, #3967
+  static in_game + #845, #3967
+  static in_game + #846, #3967
+  static in_game + #847, #3967
+  static in_game + #848, #3967
+  static in_game + #849, #3967
+  static in_game + #850, #3967
+  static in_game + #851, #3967
+  static in_game + #852, #3967
+  static in_game + #853, #3967
+  static in_game + #854, #3967
+  static in_game + #855, #3967
+  static in_game + #856, #3967
+  static in_game + #857, #3967
+  static in_game + #858, #3967
+  static in_game + #859, #3967
+  static in_game + #860, #3967
+  static in_game + #861, #3967
+  static in_game + #862, #3967
+  static in_game + #863, #3967
+  static in_game + #864, #3967
+  static in_game + #865, #3967
+  static in_game + #866, #3967
+  static in_game + #867, #3967
+  static in_game + #868, #3967
+  static in_game + #869, #3967
+  static in_game + #870, #3967
+  static in_game + #871, #3967
+  static in_game + #872, #3967
+  static in_game + #873, #3967
+  static in_game + #874, #3967
+  static in_game + #875, #3967
+  static in_game + #876, #3967
+  static in_game + #877, #3967
+  static in_game + #878, #3967
+  static in_game + #879, #2880
+
+  ;Linha 22
+  static in_game + #880, #2880
+  static in_game + #881, #3967
+  static in_game + #882, #3967
+  static in_game + #883, #3967
+  static in_game + #884, #3967
+  static in_game + #885, #3967
+  static in_game + #886, #3967
+  static in_game + #887, #3967
+  static in_game + #888, #3967
+  static in_game + #889, #3967
+  static in_game + #890, #3967
+  static in_game + #891, #3967
+  static in_game + #892, #3967
+  static in_game + #893, #3967
+  static in_game + #894, #3967
+  static in_game + #895, #3967
+  static in_game + #896, #3967
+  static in_game + #897, #3967
+  static in_game + #898, #3967
+  static in_game + #899, #3967
+  static in_game + #900, #3967
+  static in_game + #901, #3967
+  static in_game + #902, #3967
+  static in_game + #903, #3967
+  static in_game + #904, #3967
+  static in_game + #905, #3967
+  static in_game + #906, #3967
+  static in_game + #907, #3967
+  static in_game + #908, #3967
+  static in_game + #909, #3967
+  static in_game + #910, #3967
+  static in_game + #911, #3967
+  static in_game + #912, #3967
+  static in_game + #913, #3967
+  static in_game + #914, #3967
+  static in_game + #915, #3967
+  static in_game + #916, #3967
+  static in_game + #917, #3967
+  static in_game + #918, #3967
+  static in_game + #919, #2880
+
+  ;Linha 23
+  static in_game + #920, #2880
+  static in_game + #921, #3967
+  static in_game + #922, #3967
+  static in_game + #923, #3967
+  static in_game + #924, #3967
+  static in_game + #925, #3967
+  static in_game + #926, #3967
+  static in_game + #927, #3967
+  static in_game + #928, #3967
+  static in_game + #929, #3967
+  static in_game + #930, #3967
+  static in_game + #931, #3967
+  static in_game + #932, #3967
+  static in_game + #933, #3967
+  static in_game + #934, #3967
+  static in_game + #935, #3967
+  static in_game + #936, #3967
+  static in_game + #937, #3967
+  static in_game + #938, #3967
+  static in_game + #939, #3967
+  static in_game + #940, #3967
+  static in_game + #941, #3967
+  static in_game + #942, #3967
+  static in_game + #943, #3967
+  static in_game + #944, #3967
+  static in_game + #945, #3967
+  static in_game + #946, #3967
+  static in_game + #947, #3967
+  static in_game + #948, #3967
+  static in_game + #949, #3967
+  static in_game + #950, #3967
+  static in_game + #951, #3967
+  static in_game + #952, #3967
+  static in_game + #953, #3967
+  static in_game + #954, #3967
+  static in_game + #955, #3967
+  static in_game + #956, #3967
+  static in_game + #957, #3967
+  static in_game + #958, #3967
+  static in_game + #959, #2880
+
+  ;Linha 24
+  static in_game + #960, #2880
+  static in_game + #961, #3967
+  static in_game + #962, #3967
+  static in_game + #963, #3967
+  static in_game + #964, #3967
+  static in_game + #965, #3967
+  static in_game + #966, #3967
+  static in_game + #967, #3967
+  static in_game + #968, #3967
+  static in_game + #969, #3967
+  static in_game + #970, #3967
+  static in_game + #971, #3967
+  static in_game + #972, #3967
+  static in_game + #973, #3967
+  static in_game + #974, #3967
+  static in_game + #975, #3967
+  static in_game + #976, #3967
+  static in_game + #977, #3967
+  static in_game + #978, #3967
+  static in_game + #979, #3967
+  static in_game + #980, #3967
+  static in_game + #981, #3967
+  static in_game + #982, #3967
+  static in_game + #983, #3967
+  static in_game + #984, #3967
+  static in_game + #985, #3967
+  static in_game + #986, #3967
+  static in_game + #987, #3967
+  static in_game + #988, #3967
+  static in_game + #989, #3967
+  static in_game + #990, #3967
+  static in_game + #991, #3967
+  static in_game + #992, #3967
+  static in_game + #993, #3967
+  static in_game + #994, #3967
+  static in_game + #995, #3967
+  static in_game + #996, #3967
+  static in_game + #997, #3967
+  static in_game + #998, #3967
+  static in_game + #999, #2880
+
+  ;Linha 25
+  static in_game + #1000, #2880
+  static in_game + #1001, #3967
+  static in_game + #1002, #3967
+  static in_game + #1003, #3967
+  static in_game + #1004, #3967
+  static in_game + #1005, #3967
+  static in_game + #1006, #3967
+  static in_game + #1007, #3967
+  static in_game + #1008, #3967
+  static in_game + #1009, #3967
+  static in_game + #1010, #3967
+  static in_game + #1011, #3967
+  static in_game + #1012, #3967
+  static in_game + #1013, #3967
+  static in_game + #1014, #3967
+  static in_game + #1015, #3967
+  static in_game + #1016, #3967
+  static in_game + #1017, #3967
+  static in_game + #1018, #3967
+  static in_game + #1019, #3967
+  static in_game + #1020, #3967
+  static in_game + #1021, #3967
+  static in_game + #1022, #3967
+  static in_game + #1023, #3967
+  static in_game + #1024, #3967
+  static in_game + #1025, #3967
+  static in_game + #1026, #3967
+  static in_game + #1027, #3967
+  static in_game + #1028, #3967
+  static in_game + #1029, #3967
+  static in_game + #1030, #3967
+  static in_game + #1031, #3967
+  static in_game + #1032, #3967
+  static in_game + #1033, #3967
+  static in_game + #1034, #3967
+  static in_game + #1035, #3967
+  static in_game + #1036, #3967
+  static in_game + #1037, #3967
+  static in_game + #1038, #3967
+  static in_game + #1039, #2880
+
+  ;Linha 26
+  static in_game + #1040, #2880
+  static in_game + #1041, #3967
+  static in_game + #1042, #3967
+  static in_game + #1043, #3967
+  static in_game + #1044, #3967
+  static in_game + #1045, #3967
+  static in_game + #1046, #3967
+  static in_game + #1047, #3967
+  static in_game + #1048, #3967
+  static in_game + #1049, #3967
+  static in_game + #1050, #3967
+  static in_game + #1051, #3967
+  static in_game + #1052, #3967
+  static in_game + #1053, #3967
+  static in_game + #1054, #3967
+  static in_game + #1055, #3967
+  static in_game + #1056, #3967
+  static in_game + #1057, #3967
+  static in_game + #1058, #3967
+  static in_game + #1059, #3967
+  static in_game + #1060, #3967
+  static in_game + #1061, #3967
+  static in_game + #1062, #3967
+  static in_game + #1063, #3967
+  static in_game + #1064, #3967
+  static in_game + #1065, #3967
+  static in_game + #1066, #3967
+  static in_game + #1067, #3967
+  static in_game + #1068, #3967
+  static in_game + #1069, #3967
+  static in_game + #1070, #3967
+  static in_game + #1071, #3967
+  static in_game + #1072, #3967
+  static in_game + #1073, #3967
+  static in_game + #1074, #3967
+  static in_game + #1075, #3967
+  static in_game + #1076, #3967
+  static in_game + #1077, #3967
+  static in_game + #1078, #3967
+  static in_game + #1079, #2880
+
+  ;Linha 27
+  static in_game + #1080, #2880
+  static in_game + #1081, #3967
+  static in_game + #1082, #3967
+  static in_game + #1083, #3967
+  static in_game + #1084, #3967
+  static in_game + #1085, #3967
+  static in_game + #1086, #3967
+  static in_game + #1087, #3967
+  static in_game + #1088, #3967
+  static in_game + #1089, #3967
+  static in_game + #1090, #3967
+  static in_game + #1091, #3967
+  static in_game + #1092, #3967
+  static in_game + #1093, #3967
+  static in_game + #1094, #3967
+  static in_game + #1095, #3967
+  static in_game + #1096, #3967
+  static in_game + #1097, #3967
+  static in_game + #1098, #3967
+  static in_game + #1099, #3967
+  static in_game + #1100, #3967
+  static in_game + #1101, #3967
+  static in_game + #1102, #3967
+  static in_game + #1103, #3967
+  static in_game + #1104, #3967
+  static in_game + #1105, #3967
+  static in_game + #1106, #3967
+  static in_game + #1107, #3967
+  static in_game + #1108, #3967
+  static in_game + #1109, #3967
+  static in_game + #1110, #3967
+  static in_game + #1111, #3967
+  static in_game + #1112, #3967
+  static in_game + #1113, #3967
+  static in_game + #1114, #3967
+  static in_game + #1115, #3967
+  static in_game + #1116, #3967
+  static in_game + #1117, #3967
+  static in_game + #1118, #3967
+  static in_game + #1119, #2880
+
+  ;Linha 28
+  static in_game + #1120, #2880
+  static in_game + #1121, #3967
+  static in_game + #1122, #3967
+  static in_game + #1123, #3967
+  static in_game + #1124, #3967
+  static in_game + #1125, #3967
+  static in_game + #1126, #3967
+  static in_game + #1127, #3967
+  static in_game + #1128, #3967
+  static in_game + #1129, #3967
+  static in_game + #1130, #3967
+  static in_game + #1131, #3967
+  static in_game + #1132, #3967
+  static in_game + #1133, #3967
+  static in_game + #1134, #3967
+  static in_game + #1135, #3967
+  static in_game + #1136, #3967
+  static in_game + #1137, #3967
+  static in_game + #1138, #3967
+  static in_game + #1139, #3967
+  static in_game + #1140, #3967
+  static in_game + #1141, #3967
+  static in_game + #1142, #3967
+  static in_game + #1143, #3967
+  static in_game + #1144, #3967
+  static in_game + #1145, #3967
+  static in_game + #1146, #3967
+  static in_game + #1147, #3967
+  static in_game + #1148, #3967
+  static in_game + #1149, #3967
+  static in_game + #1150, #3967
+  static in_game + #1151, #3967
+  static in_game + #1152, #3967
+  static in_game + #1153, #3967
+  static in_game + #1154, #3967
+  static in_game + #1155, #3967
+  static in_game + #1156, #3967
+  static in_game + #1157, #3967
+  static in_game + #1158, #3967
+  static in_game + #1159, #2880
+
+  ;Linha 29
+  static in_game + #1160, #2880
+  static in_game + #1161, #2880
+  static in_game + #1162, #2880
+  static in_game + #1163, #2880
+  static in_game + #1164, #2880
+  static in_game + #1165, #2880
+  static in_game + #1166, #2880
+  static in_game + #1167, #2880
+  static in_game + #1168, #2880
+  static in_game + #1169, #2880
+  static in_game + #1170, #2880
+  static in_game + #1171, #2880
+  static in_game + #1172, #2880
+  static in_game + #1173, #2880
+  static in_game + #1174, #2880
+  static in_game + #1175, #2880
+  static in_game + #1176, #2880
+  static in_game + #1177, #2880
+  static in_game + #1178, #2880
+  static in_game + #1179, #2880
+  static in_game + #1180, #2880
+  static in_game + #1181, #2880
+  static in_game + #1182, #2880
+  static in_game + #1183, #2880
+  static in_game + #1184, #2880
+  static in_game + #1185, #2880
+  static in_game + #1186, #2880
+  static in_game + #1187, #2880
+  static in_game + #1188, #2880
+  static in_game + #1189, #2880
+  static in_game + #1190, #2880
+  static in_game + #1191, #2880
+  static in_game + #1192, #2880
+  static in_game + #1193, #2880
+  static in_game + #1194, #2880
+  static in_game + #1195, #2880
+  static in_game + #1196, #2880
+  static in_game + #1197, #2880
+  static in_game + #1198, #2880
+  static in_game + #1199, #2880
+
+printin_gameScreen:
+  push R0
+  push R1
+  push R2
+  push R3
+
+  loadn R0, #in_game
+  loadn R1, #0
+  loadn R2, #1200
+
+  printin_gameScreenLoop:
+
+    add R3,R0,R1
+    loadi R3, R3
+    outchar R3, R1
+    inc R1
+    cmp R1, R2
+
+    jne printin_gameScreenLoop
+
+  pop R3
+  pop R2
+  pop R1
+  pop R0
+  rts
 
 printCobraScreen:
 
@@ -4022,9 +5312,7 @@ Reiniciar: ;apaga a tela e dá um goto pro loop da main
     call Apaga_Cobra
     call Incializar_Cobra
     call LimpaTela
-    call Mapa_Teste
-    loadn r3, #0
-    store Score, r1
+    call printin_gameScreen
     
     jmp loop_cobra_viva
     
@@ -4043,22 +5331,19 @@ Incializar_Cobra:
     loadn r0, #3
     store Tamanho_da_cobra, r0
     
-    ; Posicao_da_cobra[0] = 460
+    ; Posicao_da_cobra[cabeça] = 460
     loadn   r0, #Posicao_da_cobra
     loadn   r1, #460
     storei  r0, r1
     
-    ; Posicao_da_cobra[1] = 459
     inc   r0
     dec   r1
     storei  r0, r1
     
-    ; Posicao_da_cobra[2] = 458
     inc   r0
     dec   r1
     storei  r0, r1
     
-    ; Posicao_da_cobra[3] = 457
     inc   r0
     dec   r1
     storei  r0, r1
@@ -4085,7 +5370,7 @@ Cobra_Inicio:
   push r2
   push r3
   
-  loadn r0, #Posicao_da_cobra  ; r0 = & Posicao_da_cobra
+  loadn r0, #Posicao_da_cobra  ; r0 = &Posicao_da_cobra
   loadi r2, r0                 ; r2 = Posicao_da_cobra[0]
     
   loadn r3, #0                  ; r3 = 0
@@ -4139,57 +5424,6 @@ Apaga_Cobra: ;a cada 'movimentação', um pedaço '@' da cobra é substituido po
   pop r0
   
   rts
-
-Mapa_Teste:
-
-  push r0
-  push r1
-  push r2
-  push r3
-  push r4
-  
-  loadn r0, #0
-  loadn r1, #39
-  
-  loadn r2, #'@'
-  
-  loadn r3, #40
-  loadn r4, #1200
-  
-  Stage_Loop1:
-    outchar r2, r0
-    add r0, r0, r3
-    nop
-    nop
-    outchar r2, r1  
-    
-    add r1, r1, r3
-    
-    cmp r0, r4
-    jle Stage_Loop1
-    
-  loadn r0, #1
-  loadn r1, #1161
-  
-  Stage_Loop2:
-    outchar r2, r0
-    inc r0
-    nop
-    nop
-    outchar r2, r1
-    
-    inc r1
-    
-    cmp r0, r3
-    jle Stage_Loop2
-  
-    pop r4
-    pop r3
-    pop r2
-    pop r1
-    pop r0
-  
-    rts
 
 Movimentacao_da_Cobra:
 
@@ -4409,32 +5643,31 @@ Repor_Comida: ;lógica para reposição de comida
   
   Atualiza_Direita:
   
-    loadn r3, #355
+    loadn r3, #354
     add r1, r1, r3
     jmp Insere_Comida_Grid
     
   Atualiza_Baixo:
   
-    loadn r3, #445
+    loadn r3, #444
     sub r1, r1, r3
     jmp Insere_Comida_Grid
     
   Atualiza_Esquerda:
   
-    loadn r3, #395
+    loadn r3, #396
     sub r1, r1, r3
     jmp Insere_Comida_Grid
     
   Atualiza_Cima:
   
-    loadn r3, #485
+    loadn r3, #484
     add r1, r1, r3
     jmp Insere_Comida_Grid
   
-  
   Insere_Comida_Grid:
   
-    loadn r2, #40 ;impede de a comida ser reposta fora do grid superior
+    loadn r2, #41 ;impede de a comida ser reposta fora do grid superior
     cmp r1, r2
     jle Comida_Inferior_Grid
     
@@ -4533,6 +5766,7 @@ Loop_Colisao:
       jmp Morreu_rts
   
 Inicia_Fim:
+
     load  r0, Comida_index
     loadn   r1, #' '
     outchar r1, r0
@@ -4580,6 +5814,5 @@ Desenha_Cobra_E_Comida:
     pop r0
   
   rts
-  
 ;LOGIC END
 ;===================================================
